@@ -1,7 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://d3buvk5s70ta6"]
 
 [ext_resource type="Script" uid="uid://bucrk8uatfxve" path="res://level_1.gd" id="1_jwv3a"]
-[ext_resource type="Texture2D" uid="uid://bquy8dd80gkmv" path="res://blue.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://difoarnnix0te" path="res://MiniWorldSprites/Ground/Cliff-Water.png" id="3_ootpb"]
 [ext_resource type="Texture2D" uid="uid://u212sugt8s8h" path="res://MiniWorldSprites/Ground/Shore.png" id="3_v38iq"]
 [ext_resource type="Texture2D" uid="uid://c1ujvnxphxn8k" path="res://MiniWorldSprites/Ground/image_2025-11-01_21-54-14.png" id="4_v38iq"]
@@ -61,6 +60,8 @@ sources/3 = SubResource("TileSetAtlasSource_crycw")
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Theme" id="Theme_v8kj3"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_crycw"]
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -77,12 +78,14 @@ offset_right = 1379.0
 offset_bottom = 649.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Control"]
+visible = false
 position = Vector2(700, 400)
 tile_map_data = PackedByteArray("AAD//wAAAwAAAAAAAAD+/wAAAwAAAAAAAAD+/wEAAwAAAAAAAAD//wEAAwAAAAAAAAAAAAAAAwAAAAAAAAAAAP//AwAAAAAAAAD/////AwAAAAAAAAD+////AwAAAAAAAAAAAAEAAwAAAAAAAAD//wIAAwAAAAAAAAD+/wIAAwAAAAAAAAABAAIAAwAAAAAAAAAAAAIAAwAAAAAAAAABAAEAAwAAAAAAAAABAAAAAwAAAAAAAAABAP//AwAAAAAAAAD9/wAAAwAAAAAAAAD9////AwAAAAAAAAD+//7/AwAAAAAAAAD///7/AwAAAAAAAAAAAP7/AwAAAAAAAAABAP7/AwAAAAAAAAACAP//AwAAAAAAAAACAP7/AwAAAAAAAAD8/wEAAwAAAAAAAAD8/wAAAwAAAAAAAAD9/wEAAwAAAAAAAAD8////AwAAAAAAAAD9//7/AwAAAAAAAAD8//7/AwAAAAAAAAD9/wIAAwAAAAAAAAD8/wIAAwAAAAAAAAACAAIAAwAAAAAAAAACAAEAAwAAAAAAAAACAAAAAwAAAAAAAAADAAIAAwAAAAAAAAADAAEAAwAAAAAAAAADAAAAAwAAAAAAAAADAP//AwAAAAAAAAADAP7/AwAAAAAAAAD8/wUAAwAAAAAAAAD8/wQAAwAAAAAAAAD8/wMAAwAAAAAAAAD8//3/AwAAAAAAAAD8//z/AwAAAAAAAAD9//z/AwAAAAAAAAD9//3/AwAAAAAAAAD9/wMAAwAAAAAAAAD9/wQAAwAAAAAAAAD9/wUAAwAAAAAAAAD+//z/AwAAAAAAAAD+//3/AwAAAAAAAAD+/wMAAwAAAAAAAAD+/wQAAwAAAAAAAAD+/wUAAwAAAAAAAAD///z/AwAAAAAAAAD///3/AwAAAAAAAAD//wMAAwAAAAAAAAD//wQAAwAAAAAAAAD//wUAAwAAAAAAAAAAAPz/AwAAAAAAAAAAAP3/AwAAAAAAAAAAAAMAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAUAAwAAAAAAAAABAPz/AwAAAAAAAAABAP3/AwAAAAAAAAABAAMAAwAAAAAAAAABAAQAAwAAAAAAAAABAAUAAwAAAAAAAAACAPz/AwAAAAAAAAACAP3/AwAAAAAAAAACAAMAAwAAAAAAAAACAAQAAwAAAAAAAAACAAUAAwAAAAAAAAADAPz/AwAAAAAAAAADAP3/AwAAAAAAAAADAAMAAwAAAAAAAAADAAQAAwAAAAAAAAADAAUAAwAAAAAAAAD6//z/AwAAAAAAAAD7//z/AwAAAAAAAAD6//3/AwAAAAAAAAD7//3/AwAAAAAAAAD6//7/AwAAAAAAAAD7//7/AwAAAAAAAAD6////AwAAAAAAAAD7////AwAAAAAAAAD6/wAAAwAAAAAAAAD7/wAAAwAAAAAAAAD6/wEAAwAAAAAAAAD7/wEAAwAAAAAAAAD6/wIAAwAAAAAAAAD7/wIAAwAAAAAAAAD6/wMAAwAAAAAAAAD7/wMAAwAAAAAAAAD6/wQAAwAAAAAAAAD7/wQAAwAAAAAAAAD6/wUAAwAAAAAAAAD7/wUAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_v8kj3")
 script = ExtResource("1_jwv3a")
 
 [node name="Button" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1080.0
 offset_top = 200.0
@@ -91,6 +94,7 @@ offset_bottom = 278.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button2" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1080.0
 offset_top = 112.0
@@ -99,6 +103,7 @@ offset_bottom = 190.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button3" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1256.0
 offset_top = 200.0
@@ -107,6 +112,7 @@ offset_bottom = 278.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button5" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1168.0
 offset_top = 112.0
@@ -115,6 +121,7 @@ offset_bottom = 190.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button6" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1256.0
 offset_top = 112.0
@@ -123,6 +130,7 @@ offset_bottom = 190.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button7" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1080.0
 offset_top = 288.0
@@ -131,6 +139,7 @@ offset_bottom = 366.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button8" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1168.0
 offset_top = 288.0
@@ -139,6 +148,7 @@ offset_bottom = 366.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button9" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1256.0
 offset_top = 288.0
@@ -155,6 +165,7 @@ offset_bottom = 631.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Button4" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1168.0
 offset_top = 200.0
@@ -163,6 +174,7 @@ offset_bottom = 270.0
 theme_override_icons/icon = ExtResource("5_v8kj3")
 
 [node name="Label" type="Label" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1086.0
 offset_top = 13.0
@@ -174,20 +186,15 @@ label_settings = SubResource("LabelSettings_v8kj3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Blue" type="Sprite2D" parent="Control"]
-position = Vector2(630, 470.25)
-scale = Vector2(0.58333325, 1.2424513)
-texture = ExtResource("2_dopym")
-
 [node name="BoxContainer" type="BoxContainer" parent="."]
-anchors_preset = -1
-offset_left = 335.0
-offset_top = 330.0
-offset_right = 835.0
-offset_bottom = 830.0
-grow_horizontal = 2
-grow_vertical = 2
+self_modulate = Color(0, 0, 0, 1)
+clip_children = 1
+offset_left = 440.0
+offset_top = 202.0
+offset_right = 940.0
+offset_bottom = 702.0
 size_flags_stretch_ratio = 2.08
+theme = SubResource("Theme_v8kj3")
 vertical = true
 
 [node name="Control" type="Control" parent="BoxContainer"]

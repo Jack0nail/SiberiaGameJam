@@ -1,0 +1,462 @@
+[gd_scene load_steps=23 format=3 uid="uid://kagk4ou2q1ki"]
+
+[ext_resource type="Script" uid="uid://be5n5eenn7o3n" path="res://mainnode.gd" id="1_112p8"]
+[ext_resource type="Texture2D" uid="uid://coaf2xikeqad7" path="res://all-blocks-32.png" id="2_e2u21"]
+[ext_resource type="Texture2D" uid="uid://hd4qwjkppahq" path="res://TX Tileset Grass.png" id="3_bss38"]
+[ext_resource type="Texture2D" uid="uid://3celi1dyi12g" path="res://all-blocks-64.png" id="4_e2u21"]
+[ext_resource type="Texture2D" uid="uid://c4kfp1rm1tvuv" path="res://fart64.png" id="5_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://bmcpd83nbmdfs" path="res://fart64-2 (2).png" id="6_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://cr2sdw5euxabn" path="res://boykisser-logo-png_seeklogo-494559 (╨Я╨╛╨╗╤М╨╖╨╛╨▓╨░╤В╨╡╨╗╤М╤Б╨║╨╛╨╡) (1).png" id="6_tda05"]
+[ext_resource type="Texture2D" uid="uid://bymvkt3n37gh2" path="res://70x70.png" id="8_l6pdb"]
+[ext_resource type="Texture2D" uid="uid://btd0j7s2d80k5" path="res://mob.png" id="8_r657h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
+texture = ExtResource("4_e2u21")
+margins = Vector2i(1, 0)
+texture_region_size = Vector2i(63, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+26:0/0 = 0
+27:0/0 = 0
+28:0/0 = 0
+29:0/0 = 0
+30:0/0 = 0
+31:0/0 = 0
+32:0/0 = 0
+33:0/0 = 0
+34:0/0 = 0
+35:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+27:1/0 = 0
+28:1/0 = 0
+29:1/0 = 0
+30:1/0 = 0
+31:1/0 = 0
+32:1/0 = 0
+33:1/0 = 0
+34:1/0 = 0
+35:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qn3nj"]
+texture = ExtResource("2_e2u21")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+2:5/0 = 0
+2:4/0 = 0
+2:3/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+5:2/0 = 0
+4:2/0 = 0
+4:1/0 = 0
+7:0/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+5:1/0 = 0
+7:3/0 = 0
+6:4/0 = 0
+5:5/0 = 0
+4:5/0 = 0
+3:5/0 = 0
+3:2/0 = 0
+6:3/0 = 0
+5:4/0 = 0
+4:3/0 = 0
+3:4/0 = 0
+1:5/0 = 0
+1:3/0 = 0
+3:3/0 = 0
+4:4/0 = 0
+3:6/0 = 0
+1:4/0 = 0
+5:3/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+7:7/0 = 0
+6:7/0 = 0
+5:7/0 = 0
+5:6/0 = 0
+4:6/0 = 0
+7:4/0 = 0
+6:6/0 = 0
+4:7/0 = 0
+3:7/0 = 0
+2:7/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bss38"]
+texture = ExtResource("3_bss38")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+26:0/0 = 0
+27:0/0 = 0
+28:0/0 = 0
+29:0/0 = 0
+30:0/0 = 0
+31:0/0 = 0
+32:0/0 = 0
+33:0/0 = 0
+34:0/0 = 0
+35:0/0 = 0
+36:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+27:1/0 = 0
+28:1/0 = 0
+29:1/0 = 0
+30:1/0 = 0
+31:1/0 = 0
+32:1/0 = 0
+33:1/0 = 0
+34:1/0 = 0
+35:1/0 = 0
+36:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_l6pdb"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(60, 47)
+sources/0 = SubResource("TileSetAtlasSource_tda05")
+sources/1 = SubResource("TileSetAtlasSource_qn3nj")
+sources/2 = SubResource("TileSetAtlasSource_bss38")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0urt"]
+texture = ExtResource("5_qn3nj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6pdb"]
+texture = ExtResource("6_qn3nj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jfkdj"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(60, 47)
+sources/0 = SubResource("TileSetAtlasSource_f0urt")
+sources/1 = SubResource("TileSetAtlasSource_l6pdb")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r657h"]
+texture = ExtResource("6_tda05")
+margins = Vector2i(0, 9)
+texture_region_size = Vector2i(64, 55)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_f0urt"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(60, 47)
+sources/1 = SubResource("TileSetAtlasSource_r657h")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfkdj"]
+texture = ExtResource("8_r657h")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wt6go"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(60, 47)
+sources/0 = SubResource("TileSetAtlasSource_jfkdj")
+
+[sub_resource type="Theme" id="Theme_r657h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0urt"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainNode" type="Node"]
+script = ExtResource("1_112p8")
+
+[node name="TerrainMap" type="TileMapLayer" parent="."]
+position = Vector2(650, 200)
+tile_set = SubResource("TileSet_l6pdb")
+metadata/_edit_lock_ = true
+
+[node name="ObjectMap" type="TileMapLayer" parent="."]
+position = Vector2(650, 185)
+metadata/_edit_lock_ = true
+
+[node name="FartMap" type="TileMapLayer" parent="."]
+position = Vector2(650, 200)
+tile_set = SubResource("TileSet_jfkdj")
+metadata/_edit_lock_ = true
+
+[node name="PlayerMap" type="TileMapLayer" parent="."]
+position = Vector2(650, 180)
+tile_set = SubResource("TileSet_f0urt")
+metadata/_edit_lock_ = true
+
+[node name="monsterMap" type="TileMapLayer" parent="."]
+position = Vector2(650, 175)
+tile_set = SubResource("TileSet_wt6go")
+
+[node name="ButtonUpRight" type="Button" parent="."]
+offset_left = 1235.0
+offset_top = 223.0
+offset_right = 1285.0
+offset_bottom = 273.0
+
+[node name="ButtonRightUp" type="Button" parent="."]
+offset_left = 1333.0
+offset_top = 322.0
+offset_right = 1383.0
+offset_bottom = 372.0
+
+[node name="ButtonDownLeft" type="Button" parent="."]
+offset_left = 1235.0
+offset_top = 427.0
+offset_right = 1285.0
+offset_bottom = 477.0
+
+[node name="ButtonLeftDown" type="Button" parent="."]
+offset_left = 1138.0
+offset_top = 324.0
+offset_right = 1188.0
+offset_bottom = 374.0
+
+[node name="ButtonUp" type="Button" parent="."]
+offset_left = 1201.0
+offset_top = 290.0
+offset_right = 1251.0
+offset_bottom = 340.0
+metadata/_edit_lock_ = true
+
+[node name="ButtonLeft" type="Button" parent="."]
+offset_left = 1199.0
+offset_top = 363.0
+offset_right = 1249.0
+offset_bottom = 413.0
+metadata/_edit_lock_ = true
+
+[node name="ButtonRight" type="Button" parent="."]
+offset_left = 1270.0
+offset_top = 291.0
+offset_right = 1320.0
+offset_bottom = 341.0
+metadata/_edit_lock_ = true
+
+[node name="ButtonDown" type="Button" parent="."]
+offset_left = 1271.0
+offset_top = 363.0
+offset_right = 1321.0
+offset_bottom = 413.0
+metadata/_edit_lock_ = true
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+clip_children = 1
+offset_left = 440.0
+offset_top = 202.0
+offset_right = 940.0
+offset_bottom = 702.0
+size_flags_stretch_ratio = 2.08
+theme = SubResource("Theme_r657h")
+vertical = true
+
+[node name="Control" type="Control" parent="BoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="70x70" type="Sprite2D" parent="BoxContainer/Control"]
+position = Vector2(250, 93.00003)
+scale = Vector2(4.3285713, 1.9714291)
+texture = ExtResource("8_l6pdb")
+
+[node name="head" type="Label" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INHERIT"
+label_settings = SubResource("LabelSettings_f0urt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bodytext" type="Label" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "inheritinheritinheritinheritinherit
+inheritinheritinheritinheritinherit
+inheritinheritinheritinheritinherit"
+label_settings = SubResource("LabelSettings_f0urt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="BoxContainer/Control2"]
+layout_mode = 0
+offset_top = 68.0
+offset_right = 500.0
+offset_bottom = 91.0
+
+[node name="Button2" type="Button" parent="BoxContainer/Control2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 501.0
+offset_bottom = 50.0
+
+[connection signal="pressed" from="ButtonUpRight" to="." method="_on_button_up_right_pressed"]
+[connection signal="pressed" from="ButtonRightUp" to="." method="_on_button_right_up_pressed"]
+[connection signal="pressed" from="ButtonDownLeft" to="." method="_on_button_down_left_pressed"]
+[connection signal="pressed" from="ButtonLeftDown" to="." method="_on_button_left_down_pressed"]
+[connection signal="pressed" from="ButtonUp" to="." method="_on_button_up_pressed"]
+[connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="ButtonRight" to="." method="_on_button_right_pressed"]
+[connection signal="pressed" from="ButtonDown" to="." method="_on_button_down_pressed"]
+[connection signal="pressed" from="BoxContainer/Control2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BoxContainer/Control2/Button2" to="." method="_on_button_2_pressed"]

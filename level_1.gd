@@ -62,6 +62,8 @@ func _on_button_10_pressed() -> void:
 		elif numran == 9:
 			$BoxContainer/head.set("text","test 9")
 			$BoxContainer/bodytext.set("text","ya yebal no ya smog")
+			$BoxContainer/Control2/Button.set("text","sosal")
+			$BoxContainer/Control2/Button2.set("text","ebali")
 			return
 	else: return	
 
