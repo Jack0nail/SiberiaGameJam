@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Prozrenie"
-run/main_scene="uid://bew0kwvdpmn0l"
+config/name="ProjectDodep"
+run/main_scene="uid://psr4128r3u7w"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,8 +19,10 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1400
 window/size/viewport_height=900
+window/size/resizable=false
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
