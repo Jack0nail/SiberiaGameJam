@@ -4,7 +4,9 @@ extends Node
 @onready var object_map_layer: TileMapLayer = $ObjectMap
 @onready var fart_map_layer: TileMapLayer = $FartMap
 @onready var monster_map_layer: TileMapLayer = $MonsterMap
+@onready var border_map_layer: TileMapLayer = $BorderMap
 @onready var player_map_layer: TileMapLayer = $PlayerMap
+
 #var xp = 0
 #var yp = 0
 var player
@@ -40,11 +42,12 @@ func _on_request_completed(result, response_code, headers, body):
 	ymap = json["size"]["height"]
 	player = Entity.new(Vector2i(0,0))
 	player_map_layer.set_cell(player.pos, 1, Vector2i(0, 0))
+	border_map_layer.set_cell(player.pos, 0, Vector2i(0, 0))
 	for i in json["cells"]:
 		var a
 		cell_type_map.set(Vector2i(i["x"],i["y"]),i["cell_type"])
 		if (i["cell_type"] == "S"):
-			a = 0
+			a = 4
 		else:
 			a = 1
 		if (i["cell_items"].size() != 0):
@@ -85,9 +88,11 @@ func _on_button_down_pressed() -> void:
 func move_player(x:int, y:int) -> void:
 	if (player.pos.x+x<10 && player.pos.x+x>-1 && player.pos.y+y<10 && player.pos.y+y>-1):
 		player_map_layer.erase_cell(player.pos)
+		border_map_layer.erase_cell(player.pos)
 		player.pos.x += x
 		player.pos.y += y
 		player_map_layer.set_cell(player.pos, 1, Vector2i(0, 0))
+		border_map_layer.set_cell(player.pos, 0, Vector2i(0, 0))
 		fart_map_layer.erase_cell(player.pos)
 		#_rannum()
 		move_monster()
