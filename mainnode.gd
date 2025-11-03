@@ -74,70 +74,153 @@ func _on_button_left_down_pressed() -> void:
 	move_player(-1,1)
 
 func _on_button_pressed() -> void:
-	$BoxContainer.hide()
-
+	$PanelContainer.hide()
+	match $PanelContainer/BoxContainer/Control3/head.get("text"):
+		"Ивент 1:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами, а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили.")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 2:":
+			pass
+		"Ивент 3:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Старик усмехается вашей глупости и произносит заклинание, отправляющее вас в полёт на дно пропасти. Полёт оказался, не такой долгий. Пропасть была 5 метров в высоту. Приземление было болезненное, а вылезти из этой дыры у вас займёт определенное время.")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 4:":
+			pass
+		"Ивент 5:":
+			pass
+		"Ивент 6:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Вы провели отлично время в компании забавных человечков. Один даже пригласил вас в будущем на свадьбу своей внучки!")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 7:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Когда вы помогли перенести бревно, желтый и коричневый бобры пришли к вам из общей массы, встали как люди и протянули лапу. \"Спасиб, мужик. Помог. Держи краба\". Пожав им лапу и уйдя дальше, вы чувствуете, как ваше тело окрепло.")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 8:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Менестрель воодушевился вашими историями и написал песню о вас, ваших приключениях и о том, какой вы смелый и могучий воин!")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 9:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Вы почесали собаку и оба остались довольны. :)")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 10:":
+			pass
+			
 func _on_button_2_pressed() -> void:
-	$BoxContainer.hide()
+	$PanelContainer.hide()
+	match $PanelContainer/BoxContainer/Control3/head.get("text"):
+		"Ивент 1:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Оставив позади этого безумца, вы направились дальше к своей цели.")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 2:":
+			pass
+		"Ивент 3:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Старик вопросительно смотрит на вас. \"Я не щнаю?\" После чего его какой-то силой выталкивает с моста вниз, в пропасть. Туман рассеивается, и вы видите, что пропасть оказалась не более чем ямой, на дне которой лежит старик. \"Ладно, твоя вщяла. Мощещь идти.\"")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 4:":
+			pass
+		"Ивент 5:":
+			pass
+		"Ивент 6:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Вы решили оставить малышей позади, ведь у вас впереди бравый квест!")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 7:":
+			pass
+		"Ивент 8:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Вы решили покрасоваться своим могучим телом. Вы увидели как огонь загорается в его глазах, а рука сама расписывает бумагу, повествуя  о невероятности вашей физической формы!")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 9:":
+			$rezult/BoxContainer/Control3/bodyText.set("text","Вы почесали собаку и оба остались довольны. :)")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult.show()
+		"Ивент 10:":
+			pass
 
 func _rannum():
 	if (randi()%100+1) <= 20:
-		pass#$BoxContainer.show()
+		$PanelContainer.show()
 
 	var numran = randi()%10 
 	match numran:
 		0:
-			$BoxContainer/Control3/head.set("text","Ивент 1:")
-			$BoxContainer/Control3/bodyText.set("text","Вам на пути попался бродячий торговец. Он заявляет что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый \"эликсир\", дающий \"прозрение\". Он назвал его \"Кубок огня\", а на этикетке нарисовано 3 острых перца. Примите его предложение?")
-			$BoxContainer/Control2/Button.set("text","\"Да, почему нет?\"")
-			$BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 1:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","У вас на пути попался бродячий торговец. Он заявляет, что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый эликсир, дающий прозрение. Он назвал его \"Кубок огня\", а на этикетке нарисовано 3 острых перца. Примите его предложение?")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","\"Да, почему нет?\"")
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим")
+			$PanelContainer/BoxContainer/Control2/Button2.show()
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 			
 		1:
-			$BoxContainer/Control3/head.set("text","Ивент 2:")
-			$BoxContainer/Control3/bodyText.set("text","По мере вашего продвижения у вас на пути оказывается завал. Обходить его придётся долго, проходить через него выйдет проблематично.")
-			$BoxContainer/Control2/Button.set("text","О как")
-			$BoxContainer/Control2/Button2.hide()
-			$BoxContainer/Control2/Button2.set("text"," ")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 2:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","По мере вашего продвижения у вас на пути оказывается завал. Обходить его придётся долго, проходить через него выйдет проблематично.")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button2.hide()
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","")
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		2:
-			$BoxContainer/Control3/head.set("text","Ивент 3:")
-			$BoxContainer/Control3/bodyText.set("text","Вам встретился старик в чёрной робе, стоящий на мосту. Мост расположен над пропастью, именуемой \"Ущелье Вечной Опасности\", если верить табличке рядом с ней. Туман скрывает дно, не позволяя понять насколько глубокое это ущелье. \"Вщяк щуда идущий, отвещь на вопрощ и можещь идти. Ответищь неправильно - умрёщь. Какова скорощть лащточки бещ груза?\"")
-			$BoxContainer/Control2/Button.set("text","Щто?")
-			$BoxContainer/Control2/Button2.set("text","0.050283 маха")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 3:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вам встретился старик в чёрной робе, стоящий на мосту. Мост расположен над пропастью, именуемой \"Ущелье Вечной Опасности\", если верить табличке рядом с ней. Туман скрывает дно, не позволяя понять, насколько глубокое это ущелье. \"Вщяк щуда идущий, отвещь на вопрощ и можещь идти. Ответищь неправильно - умрёщь. Какова скорощть лащточки бещ груза? \"")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","Щто?")
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","Европейской или Африканской?")
+			$PanelContainer/BoxContainer/Control2/Button2.show()
+			$PanelContainer/BoxContainer/Control2/Button3.set("text","0.050283 маха")
+			$PanelContainer/BoxContainer/Control2/Button3.show()
 		3:
-			$BoxContainer/Control3/head.set("text","Ивент 4:")
-			$BoxContainer/Control3/bodyText.set("text","Вы нашли поляну полную сочных, ярких и красочных ягод. Вы решили сорвать немного себе в запас. Быть может и варенье сварите.")
-			$BoxContainer/Control2/Button.set("text","О как")
-			$BoxContainer/Control2/Button2.hide()
-			$BoxContainer/Control2/Button2.set("text"," ")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 4:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вы нашли поляну, полную сочных, ярких и красочных ягод. Вы решили сорвать немного себе в запас. Быть может, и варенье сварите.")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button2.hide()
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","")
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		4:
-			$BoxContainer/Control3/head.set("text","test 4")
-			$BoxContainer/Control3/bodyText.set("text","У вас на пути попался бродячий торговец. Он заявляет что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый эликсир, дающий прозрение. Он назвал его Кубок огня, а на этикетке нарисовано 3 острых перца, сложенные в букву Щ. Примите его предложение?")
-			$BoxContainer/Control2/Button.set("text","\"Да, почему нет?\" (На 2-3 хода получаешь возможность видеть дальше на 1 клетку, но другие игроки тут же узнают о твоём местоположении) \"Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили, но вы уверены, что вы не остались незамеченными.\"")
-			$BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 5:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вы проходите мимо палатки, из которой доносится металлический звон. Желая узнать, что в ней, вы увидели низкорослого, бородатого и широкого мужчину, сидящего (или стоящего? Тяжело из-за роста сказать наверняка) перед наковальней. Кузнец Георг, как он представился, любезно предложил заточить ваши когти. После его работы они сияют великолепием.")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button2.hide()
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","")
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		5:
-			$BoxContainer/Control3/head.set("text","test 5")
-			$BoxContainer/Control3/bodyText.set("text","У вас на пути попался бродячий торговец. Он заявляет что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый эликсир, дающий прозрение. Он назвал его Кубок огня, а на этикетке нарисовано 3 острых перца, сложенные в букву Щ. Примите его предложение?")
-			$BoxContainer/Control2/Button.set("text","\"Да, почему нет?\" (На 2-3 хода получаешь возможность видеть дальше на 1 клетку, но другие игроки тут же узнают о твоём местоположении) \"Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили, но вы уверены, что вы не остались незамеченными.\"")
-			$BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 6:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Под своими ногами вы услышали бормотание и звон посуды. Опустив взгляд, вы подмечаете небольшой чайный столик, за которым сидят забавные старички с красными колпаками. Они приглашают вас к себе на чаепитие. Примете приглашение?")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","Да!")
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","Нет, спасибо.")
+			$PanelContainer/BoxContainer/Control2/Button2.show()
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		6:
-			$BoxContainer/Control3/head.set("text","test 6")
-			$BoxContainer/Control3/bodyText.set("text","У вас на пути попался бродячий торговец. Он заявляет что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый эликсир, дающий прозрение. Он назвал его Кубок огня, а на этикетке нарисовано 3 острых перца, сложенные в букву Щ. Примите его предложение?")
-			$BoxContainer/Control2/Button.set("text","\"Да, почему нет?\" (На 2-3 хода получаешь возможность видеть дальше на 1 клетку, но другие игроки тут же узнают о твоём местоположении) \"Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили, но вы уверены, что вы не остались незамеченными.\"")
-			$BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 7:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Проходя недалеко от водоёма, вы увидели банду бобров. Они имеют трудности с тем, чтобы перенести бревно к водоёму. Вы им поможете?")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","Братья наши меньшие нуждаются в помощи!")
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","Животные сами разберутся.")
+			$PanelContainer/BoxContainer/Control2/Button2.show()
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		7:
-			$BoxContainer/Control3/head.set("text","test 7")
-			$BoxContainer/Control3/bodyText.set("text","У вас на пути попался бродячий торговец. Он заявляет что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый эликсир, дающий прозрение. Он назвал его Кубок огня, а на этикетке нарисовано 3 острых перца, сложенные в букву Щ. Примите его предложение?")
-			$BoxContainer/Control2/Button.set("text","\"Да, почему нет?\" (На 2-3 хода получаешь возможность видеть дальше на 1 клетку, но другие игроки тут же узнают о твоём местоположении) \"Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили, но вы уверены, что вы не остались незамеченными.\"")
-			$BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 8:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вам на пути попался бродячий менестрель. У него возникли проблемы с выбором темы для своей новой баллады, и он просит вас о помощи. О чем она будет?")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","Геройский эпос! Про мои приключения!")
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","Грех не воспеть это тело!")
+			$PanelContainer/BoxContainer/Control2/Button2.show()
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		8:
-			$BoxContainer/Control3/head.set("text","test 8")
-			$BoxContainer/Control3/bodyText.set("text","У вас на пути попался бродячий торговец. Он заявляет что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый эликсир, дающий прозрение. Он назвал его Кубок огня, а на этикетке нарисовано 3 острых перца, сложенные в букву Щ. Примите его предложение?")
-			$BoxContainer/Control2/Button.set("text","\"Да, почему нет?\" (На 2-3 хода получаешь возможность видеть дальше на 1 клетку, но другие игроки тут же узнают о твоём местоположении) \"Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили, но вы уверены, что вы не остались незамеченными.\"")
-			$BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 9:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вам на встречу выбегает собака. Язык тела собаки выдает её помыслы - она хочет почесушки. Почешите собаку?")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","Да.")
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","Да!")
+			$PanelContainer/BoxContainer/Control2/Button2.show()
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		9:
-			$BoxContainer/Control3/head.set("text","test 9")
-			$BoxContainer/Control3/bodyText.set("text","У вас на пути попался бродячий торговец. Он заявляет что он успешный зельевар, хоть вы о нем никогда не слышали. Он предлагает опробовать вам свой новый эликсир, дающий прозрение. Он назвал его Кубок огня, а на этикетке нарисовано 3 острых перца, сложенные в букву Щ. Примите его предложение?")
-			$BoxContainer/Control2/Button.set("text","\"Да, почему нет?\" (На 2-3 хода получаешь возможность видеть дальше на 1 клетку, но другие игроки тут же узнают о твоём местоположении) \"Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили, но вы уверены, что вы не остались незамеченными.\"")
-			$BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
+			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 10:")
+			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вы находите брошенный лагерь. Вы не знаете, кто или что стало причиной опустошения лагеря, но при осмотре места вы обнаружили карту окружающей местности. Сравнив картинку с окружением вы поняли, что карта нарисована предельно точно.")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button2.hide()
+			$PanelContainer/BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
+			$PanelContainer/BoxContainer/Control2/Button3.hide()
 
 func move_player(x:int, y:int) -> void:
 	if turn_index <= 3:
@@ -200,3 +283,7 @@ func monster_hide():
 		monster_map_layer.show()
 	else: monster_map_layer.hide()
 	
+
+
+func _on_button_rez_pressed() -> void:
+	$rezult.hide()
