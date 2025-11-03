@@ -1,0 +1,19 @@
+{
+  "turn": {
+	"order": ["P1", "P2", "P3", "P4", "E1"],
+	"currentIndex": 0,
+	"round": 1
+  },
+  "players": {
+	"P1": { "name": "Player 1", "pos": { "x": 0, "y": 0 } },
+	"P2": { "name": "Player 2", "pos": { "x": 0, "y": 9 } },
+	"P3": { "name": "Player 3", "pos": { "x": 9, "y": 0 } },
+	"P4": { "name": "Player 4", "pos": { "x": 9, "y": 9 } }
+  },
+  "entities": {
+	"E1": {
+	  "behavior": "aggressive",
+	  "pos": { "x": 6, "y": 6 }
+	}
+  }
+}

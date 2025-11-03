@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://kagk4ou2q1ki"]
+[gd_scene load_steps=24 format=3 uid="uid://kagk4ou2q1ki"]
 
 [ext_resource type="Script" uid="uid://be5n5eenn7o3n" path="res://mainnode.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://coaf2xikeqad7" path="res://all-blocks-32.png" id="2_e2u21"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cr2sdw5euxabn" path="res://boykisser-logo-png_seeklogo-494559 (╨Я╨╛╨╗╤М╨╖╨╛╨▓╨░╤В╨╡╨╗╤М╤Б╨║╨╛╨╡) (1).png" id="6_tda05"]
 [ext_resource type="Texture2D" uid="uid://bymvkt3n37gh2" path="res://70x70.png" id="8_l6pdb"]
 [ext_resource type="Texture2D" uid="uid://btd0j7s2d80k5" path="res://mob.png" id="8_r657h"]
-[ext_resource type="FontFile" uid="uid://bk3kqlj53r8i7" path="res://Новая папка/InterTight-SemiBold.ttf" id="10_jfkdj"]
-[ext_resource type="FontFile" uid="uid://bknomlt0rqiqy" path="res://Новая папка/InterTight-Medium.ttf" id="11_wt6go"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
 texture = ExtResource("4_e2u21")
@@ -315,43 +313,11 @@ sources/0 = SubResource("TileSetAtlasSource_jfkdj")
 
 [sub_resource type="Theme" id="Theme_r657h"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jfkdj"]
-blend_mode = 4
-
 [sub_resource type="Theme" id="Theme_f0urt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0urt"]
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Theme" id="Theme_jfkdj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt6go"]
-bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-border_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcos8"]
-bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfkdj"]
-bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feppd"]
-bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_436f3"]
-bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmsyx"]
-bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeaoo"]
-bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
-border_blend = true
 
 [node name="MainNode" type="Node"]
 script = ExtResource("1_112p8")
@@ -447,7 +413,6 @@ theme = SubResource("Theme_r657h")
 vertical = true
 
 [node name="Control" type="Control" parent="BoxContainer"]
-material = SubResource("CanvasItemMaterial_jfkdj")
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -470,7 +435,6 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = 4.0
 offset_bottom = 2.0
-theme_override_fonts/font = ExtResource("10_jfkdj")
 text = "INHERIT"
 label_settings = SubResource("LabelSettings_f0urt")
 horizontal_alignment = 1
@@ -483,8 +447,7 @@ anchor_right = 1.0
 anchor_bottom = 4.26
 offset_top = 65.0
 offset_bottom = -1.5258789e-05
-theme_override_fonts/mono_font = ExtResource("10_jfkdj")
-theme_override_font_sizes/mono_font_size = 16
+theme_override_constants/outline_size = 5
 text = "inheritinheritinheritinheritinherit
 inheritinheritinheritinheritinherit
 inheritinheritinheritinheritinherit"
@@ -499,15 +462,7 @@ anchors_preset = -1
 anchor_right = 1.0
 offset_top = 160.0
 offset_bottom = 260.0
-theme = SubResource("Theme_jfkdj")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
-theme_override_fonts/font = ExtResource("11_wt6go")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_wt6go")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bcos8")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_jfkdj")
-theme_override_styles/focus = SubResource("StyleBoxFlat_feppd")
+theme_override_font_sizes/font_size = 12
 autowrap_mode = 1
 
 [node name="Button2" type="Button" parent="BoxContainer/Control2"]
@@ -516,12 +471,7 @@ anchors_preset = -1
 anchor_right = 1.0
 offset_top = 277.0
 offset_bottom = 377.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_wt6go")
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_436f3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cmsyx")
-theme_override_styles/focus = SubResource("StyleBoxFlat_aeaoo")
+theme_override_font_sizes/font_size = 12
 autowrap_mode = 1
 
 [connection signal="pressed" from="ButtonUpRight" to="." method="_on_button_up_right_pressed"]
@@ -532,5 +482,3 @@ autowrap_mode = 1
 [connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
 [connection signal="pressed" from="ButtonRight" to="." method="_on_button_right_pressed"]
 [connection signal="pressed" from="ButtonDown" to="." method="_on_button_down_pressed"]
-[connection signal="pressed" from="BoxContainer/Control2/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="BoxContainer/Control2/Button2" to="." method="_on_button_2_pressed"]
