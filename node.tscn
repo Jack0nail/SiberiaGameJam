@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://kagk4ou2q1ki"]
+[gd_scene load_steps=71 format=3 uid="uid://kagk4ou2q1ki"]
 
 [ext_resource type="Script" uid="uid://be5n5eenn7o3n" path="res://mainnode.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://coaf2xikeqad7" path="res://all-blocks-32.png" id="2_e2u21"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dudjvi3ccsck8" path="res://chevron_big_left_white.png" id="9_wt6go"]
 [ext_resource type="FontFile" uid="uid://bk3kqlj53r8i7" path="res://Новая папка/InterTight-SemiBold.ttf" id="10_jfkdj"]
 [ext_resource type="FontFile" uid="uid://bknomlt0rqiqy" path="res://Новая папка/InterTight-Medium.ttf" id="11_wt6go"]
+[ext_resource type="Texture2D" uid="uid://c1xmknewa72ug" path="res://Sprite-1213-Sheet.png" id="13_436f3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
 texture = ExtResource("4_e2u21")
@@ -591,7 +592,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeaoo"]
-bg_color = Color(0, 0, 0, 0.3137255)
+bg_color = Color(0, 0, 0, 0.5882353)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -614,8 +615,10 @@ blend_mode = 4
 [sub_resource type="Theme" id="Theme_f0urt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0urt"]
+font = ExtResource("11_wt6go")
+font_size = 35
 outline_size = 10
-outline_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0)
 
 [sub_resource type="Theme" id="Theme_jfkdj"]
 
@@ -698,6 +701,51 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql1ih"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcos8"]
+atlas = ExtResource("13_436f3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmsyx"]
+atlas = ExtResource("13_436f3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feppd"]
+atlas = ExtResource("13_436f3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeaoo"]
+atlas = ExtResource("13_436f3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sps8e"]
+atlas = ExtResource("13_436f3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bnlop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcos8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmsyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feppd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeaoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sps8e")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="MainNode" type="Node"]
 script = ExtResource("1_112p8")
@@ -810,6 +858,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
 offset_left = 258.0
 offset_top = 89.0
 offset_right = 1009.0
@@ -831,7 +880,7 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
 [node name="70x70" type="Sprite2D" parent="PanelContainer/BoxContainer/Control"]
-position = Vector2(315, 100)
+position = Vector2(374, 100)
 scale = Vector2(4.3285713, 1.9714291)
 texture = ExtResource("8_l6pdb")
 
@@ -944,7 +993,7 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 
 [node name="70x70" type="Sprite2D" parent="rezult/BoxContainer/Control"]
-position = Vector2(315, 100)
+position = Vector2(374, 100)
 scale = Vector2(4.3285713, 1.9714291)
 texture = ExtResource("8_l6pdb")
 
@@ -989,6 +1038,97 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_jfkdj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_feppd")
 autowrap_mode = 1
 
+[node name="obuch" type="PanelContainer" parent="."]
+offset_left = 258.0
+offset_top = 89.0
+offset_right = 1009.0
+offset_bottom = 842.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aeaoo")
+
+[node name="BoxContainer" type="BoxContainer" parent="obuch"]
+self_modulate = Color(0, 0, 0, 1)
+clip_children = 1
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme = SubResource("Theme_r657h")
+vertical = true
+
+[node name="Control3" type="Control" parent="obuch/BoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_f0urt")
+
+[node name="head2" type="Label" parent="obuch/BoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.2600001
+offset_bottom = -18.000004
+theme_override_fonts/font = ExtResource("10_jfkdj")
+theme_override_font_sizes/font_size = 25
+text = "INHERIT"
+label_settings = SubResource("LabelSettings_f0urt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bodyText" type="RichTextLabel" parent="obuch/BoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 2.0400002
+anchor_right = 1.0
+anchor_bottom = 10.040001
+offset_left = 2.0
+offset_right = 2.0
+offset_bottom = -6.1035156e-05
+theme_override_constants/line_separation = 3
+theme_override_fonts/mono_font = ExtResource("10_jfkdj")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_ql1ih")
+text = "inheritinheritinheritinheritinherit
+inheritinheritinheritinheritinherit
+inheritinheritinheritinheritinherit"
+fit_content = true
+
+[node name="Control2" type="Control" parent="obuch/BoxContainer"]
+layout_mode = 2
+
+[node name="Button_obuch" type="Button" parent="obuch/BoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.537
+anchor_right = 0.99200004
+offset_left = -0.13900757
+offset_top = 597.0
+offset_right = -14.024048
+offset_bottom = 683.0
+theme = SubResource("Theme_jfkdj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
+theme_override_fonts/font = ExtResource("11_wt6go")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_wt6go")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bcos8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gykuw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jfkdj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_feppd")
+text = "Далее "
+autowrap_mode = 1
+icon_alignment = 1
+
+[node name="ChevronBigLeftWhite" type="Sprite2D" parent="obuch/BoxContainer/Control2"]
+position = Vector2(621, 640)
+texture = ExtResource("9_wt6go")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="obuch/BoxContainer"]
+position = Vector2(162, 592)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bnlop")
+animation = &"new_animation"
+autoplay = "new_animation"
+
 [connection signal="pressed" from="ButtonUpRight" to="." method="_on_button_up_right_pressed"]
 [connection signal="pressed" from="ButtonRightUp" to="." method="_on_button_right_up_pressed"]
 [connection signal="pressed" from="ButtonDownLeft" to="." method="_on_button_down_left_pressed"]
@@ -1001,3 +1141,4 @@ autowrap_mode = 1
 [connection signal="pressed" from="PanelContainer/BoxContainer/Control2/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="PanelContainer/BoxContainer/Control2/Button3" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="rezult/BoxContainer/Control2/Button_rez" to="." method="_on_button_rez_pressed"]
+[connection signal="pressed" from="obuch/BoxContainer/Control2/Button_obuch" to="." method="_on_button_obuch_pressed"]
