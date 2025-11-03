@@ -11,6 +11,7 @@ var player
 var monster
 var xmap = 0
 var ymap = 0
+var cell_type_map: Dictionary[Vector2i,String]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,14 +42,15 @@ func _on_request_completed(result, response_code, headers, body):
 	player_map_layer.set_cell(player.pos, 1, Vector2i(0, 0))
 	for i in json["cells"]:
 		var a
+		cell_type_map.set(Vector2i(i["x"],i["y"]),i["cell_type"])
 		if (i["cell_type"] == "S"):
-			a = 20
+			a = 0
 		else:
-			a = 20
+			a = 1
 		if (i["cell_items"].size() != 0):
 			if (i["cell_items"][0] == "ANGRY_PERSON"):
 				monster = Entity.new(Vector2i(i["x"],i["y"]))
-		terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 2, Vector2i(a, 0))
+		terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 3, Vector2i(a, 0))
 		if (player_map_layer.get_cell_source_id(Vector2i(i["x"], i["y"])) == -1):
 			if (i["x"] == xmap-1 || i["y"] == ymap-1):
 				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(0, 0))

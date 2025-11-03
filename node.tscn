@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://psr4128r3u7w"]
+[gd_scene load_steps=18 format=3 uid="uid://psr4128r3u7w"]
 
 [ext_resource type="Script" uid="uid://bqlvdwdmdktx5" path="res://mainnode.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://dhf0wxw44nvdg" path="res://all-blocks-64-4.png" id="2_tda05"]
+[ext_resource type="Texture2D" uid="uid://bn02j2b5mcegn" path="res://new-blocks-64.png" id="3_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://bw1cm46p6r0eu" path="res://mob.png" id="5_l6pdb"]
 [ext_resource type="Texture2D" uid="uid://dpte1mko6h4pl" path="res://fart64.png" id="5_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://bsporhtrms41h" path="res://fart64-2.png" id="6_l6pdb"]
-[ext_resource type="Texture2D" uid="uid://cd5lh04ae7dsb" path="res://boykisser-logo-png_seeklogo-494559 (Пользовательское) (1).png" id="6_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://cd5lh04ae7dsb" path="res://boykisser-logo.png" id="6_qn3nj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bss38"]
 texture = ExtResource("2_tda05")
@@ -86,11 +87,20 @@ texture_region_size = Vector2i(63, 64)
 35:1/0 = 0
 36:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6pdb"]
+texture = ExtResource("3_qn3nj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_l6pdb"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(60, 47)
 sources/2 = SubResource("TileSetAtlasSource_bss38")
+sources/3 = SubResource("TileSetAtlasSource_l6pdb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0urt"]
 texture = ExtResource("5_qn3nj")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd5lh04ae7dsb"
-path="res://.godot/imported/boykisser-logo-png_seeklogo-494559 (Пользовательское) (1).png-3be8c966f02890502f4dcab492a9f17e.ctex"
+uid="uid://bn02j2b5mcegn"
+path="res://.godot/imported/new-blocks-64.png-46bb73e1372517935be4bb253d3278ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boykisser-logo-png_seeklogo-494559 (Пользовательское) (1).png"
-dest_files=["res://.godot/imported/boykisser-logo-png_seeklogo-494559 (Пользовательское) (1).png-3be8c966f02890502f4dcab492a9f17e.ctex"]
+source_file="res://new-blocks-64.png"
+dest_files=["res://.godot/imported/new-blocks-64.png-46bb73e1372517935be4bb253d3278ab.ctex"]
 
 [params]
 
