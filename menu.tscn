@@ -187,3 +187,4 @@ texture = ExtResource("3_mae5d")
 offset = Vector2(64, 110)
 
 [connection signal="pressed" from="Control/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/Button_sh" to="." method="_on_button_sh_pressed"]
