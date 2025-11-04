@@ -5,6 +5,8 @@ extends Node
 @onready var fart_map_layer: TileMapLayer = $FartMap
 @onready var border_map_layer: TileMapLayer = $BorderMap
 @onready var player_on_map = $Playerr
+@onready var enemy_on_map = $Enemy
+
 
 var xmap = 0
 var ymap = 0
@@ -26,6 +28,7 @@ func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	xmap = json["size"]["width"]
 	ymap = json["size"]["height"]
+	
 	for i in json["cells"]:
 		var a
 		cell_type_map.set(Vector2i(i["x"],i["y"]),i["cell_type"])
@@ -35,14 +38,19 @@ func _on_request_completed(result, response_code, headers, body):
 			a = 1
 		if (i["cell_items"].size() != 0):
 			if (i["cell_items"][0] == "ANGRY_PERSON"):
-				#monster = Entity.new(Vector2i(i["x"],i["y"]))
-				pass
-		terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 3, Vector2i(a, 0))
+				enemy_on_map.pos = Vector2i(i["x"],i["y"])
+				var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(enemy_on_map.pos))
+				global_pos.y -= 15
+				enemy_on_map.global_position = global_pos
+				enemy_on_map.move(global_pos)
+				
+		terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(a, 0))
+		#Отрисовка тумана
 		if (player_on_map.pos == Vector2i(i["x"], i["y"])):
 			if (i["x"] == xmap-1 || i["y"] == ymap-1):
-				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 2, Vector2i(3, 0))
+				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 0))
 			else:
-				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 2, Vector2i(3, 0))
+				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 0))
 	fart_map_layer.erase_cell(Vector2i.ZERO)
 	reset_border(player_on_map.pos)
 	
@@ -92,19 +100,19 @@ func reset_border(coodr: Vector2i) -> void:
 	border_map_layer.set_cell(coodr, 0, Vector2i(1,0))
 	if player_on_map.pos.x + 1 < xmap:
 		var pos = coodr
-		pos.x+=1
+		pos.x += 1
 		border_map_layer.set_cell(pos, 0, Vector2i(1,3))
 	if player_on_map.pos.x - 1 > -1:
 		var pos = coodr
-		pos.x-=1
+		pos.x -= 1
 		border_map_layer.set_cell(pos, 0, Vector2i(1,3))
 	if player_on_map.pos.y + 1 < ymap:
 		var pos = coodr
-		pos.y+=1
+		pos.y += 1
 		border_map_layer.set_cell(pos, 0, Vector2i(1,3))
 	if player_on_map.pos.y - 1 > -1:
 		var pos = coodr
-		pos.y-=1
+		pos.y -= 1
 		border_map_layer.set_cell(pos, 0, Vector2i(1,3))
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
