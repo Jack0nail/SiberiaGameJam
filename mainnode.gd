@@ -6,6 +6,7 @@ extends Node
 @onready var monster_map_layer: TileMapLayer = $MonsterMap
 @onready var border_map_layer: TileMapLayer = $BorderMap
 @onready var player_map_layer: TileMapLayer = $PlayerMap
+@onready var player_on_map = $Playerr
 
 #var xp = 0
 #var yp = 0
@@ -14,6 +15,7 @@ var monster
 var xmap = 0
 var ymap = 0
 var cell_type_map: Dictionary[Vector2i,String]
+var is_move: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,15 +35,22 @@ func _ready() -> void:
 					#fart_map_layer.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
 				#else:
 					#fart_map_layer.set_cell(Vector2i(x, y), 1, Vector2i(0, 0))
-	$HTTPRequest.request_completed.connect(_on_request_completed)
-	$HTTPRequest.request("http://147.45.219.226/maps/get_map/2")
+	$HTTPRequest2.request_completed.connect(_on_request_completed)
+	$HTTPRequest2.request("https://peak.e-dt.ru/maps/get_map/2")
+	
+				
+#func _on_request_id_completed(result, response_code, headers, body):
+	#$HTTPRequest.request_completed.connect(_on_request_completed)
+	#var json = JSON.parse_string(body.get_string_from_utf8())
+	#var id: int = json["id"]
+	#$HTTPRequest.request("https://peak.e-dt.ru/maps/get_map/"+str(id))
 				
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	xmap = json["size"]["width"]
 	ymap = json["size"]["height"]
 	player = Entity.new(Vector2i(0,0))
-	player_map_layer.set_cell(player.pos, 1, Vector2i(0, 0))
+	player_map_layer.set_cell(player.pos, 1, Vector2i(2, 0))
 	border_map_layer.set_cell(player.pos, 0, Vector2i(0, 0))
 	for i in json["cells"]:
 		var a
@@ -56,9 +65,9 @@ func _on_request_completed(result, response_code, headers, body):
 		terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 3, Vector2i(a, 0))
 		if (player_map_layer.get_cell_source_id(Vector2i(i["x"], i["y"])) == -1):
 			if (i["x"] == xmap-1 || i["y"] == ymap-1):
-				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(0, 0))
+				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 2, Vector2i(3, 0))
 			else:
-				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 1, Vector2i(0, 0))
+				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 2, Vector2i(3, 0))
 	
 	
 func _on_button_up_pressed() -> void:
@@ -92,7 +101,7 @@ func move_player(x:int, y:int) -> void:
 		player.pos.x += x
 		player.pos.y += y
 		player_map_layer.set_cell(player.pos, 1, Vector2i(0, 0))
-		border_map_layer.set_cell(player.pos, 0, Vector2i(0, 0))
+		border_map_layer.set_cell(player.pos, 0)
 		fart_map_layer.erase_cell(player.pos)
 		#_rannum()
 		move_monster()
@@ -164,5 +173,17 @@ func monster_chase():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+func _process(delta: float) -> void:
+	if is_move:
+		if Input.is_action_just_pressed("move_on_click"):
+			var cell_cord =terrain_map_layer.local_to_map(terrain_map_layer.get_local_mouse_position())
+			print(cell_cord)
+			var mod = cell_cord-player_on_map.pos
+			print(player_on_map.pos+mod)
+			if (abs(mod.x)+abs(mod.y)<2):
+				if (player_on_map.pos + mod >= Vector2i.ZERO && player_on_map.pos + mod < Vector2i(xmap, ymap)):
+					player_on_map.pos = cell_cord
+					var cell_pos_global = terrain_map_layer.to_global(terrain_map_layer.map_to_local(cell_cord))
+					#print(cell_pos_global)
+					cell_pos_global.y -= 15
+					player_on_map.move(Vector2(float(cell_pos_global.x), float(cell_pos_global.y)))

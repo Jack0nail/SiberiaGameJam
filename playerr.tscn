@@ -1,0 +1,91 @@
+[gd_scene load_steps=18 format=3 uid="uid://dasftqpbgksix"]
+
+[ext_resource type="Texture2D" uid="uid://cg385mu6306e0" path="res://boykisser_attack/Boykisser-attack1.png" id="1_84v1b"]
+[ext_resource type="Script" uid="uid://c1yf13es2mq1d" path="res://playerr.gd" id="1_efs0n"]
+[ext_resource type="Texture2D" uid="uid://dy1mrac74fqj" path="res://boykisser_attack/Boykisser-attack2.png" id="2_efs0n"]
+[ext_resource type="Texture2D" uid="uid://2ejcvpduxv8n" path="res://boykisser_attack/Boykisser-attack3.png" id="3_87lix"]
+[ext_resource type="Texture2D" uid="uid://brjp8wemdxdhl" path="res://boykisser_attack/Boykisser-attack4.png" id="4_fra5u"]
+[ext_resource type="Texture2D" uid="uid://ce4oxmtgu7e62" path="res://boykisser_attack/Boykisser-attack5.png" id="5_spq5p"]
+[ext_resource type="Texture2D" uid="uid://cu52uh8kn5e56" path="res://boykisser_attack/Boykisser-attack6.png" id="6_1k3jw"]
+[ext_resource type="Texture2D" uid="uid://cqer8q348twd5" path="res://boykisser_attack/Boykisser-attack7.png" id="7_flypp"]
+[ext_resource type="Texture2D" uid="uid://d1sfoirstme0i" path="res://boykisser_attack/Boykisser-attack8.png" id="8_86r1f"]
+[ext_resource type="Texture2D" uid="uid://oqrdqvhn57it" path="res://boykisser_attack/Boykisser-attack9.png" id="9_s0itk"]
+[ext_resource type="Texture2D" uid="uid://dqu3hf7c70n0n" path="res://boykisser_attack/Boykisser-attack10.png" id="10_8kofr"]
+[ext_resource type="Texture2D" uid="uid://bl3jadmsfodw8" path="res://boykisser_attack/Boykisser-attack11.png" id="11_7qedb"]
+[ext_resource type="Texture2D" uid="uid://dvi8y4qx5sh33" path="res://boykisser_attack/Boykisser-attack12.png" id="12_71nss"]
+[ext_resource type="Texture2D" uid="uid://dvm05812dtkga" path="res://Boykisser1.png" id="13_rgmvk"]
+[ext_resource type="Texture2D" uid="uid://bceiodg4jfch7" path="res://Boykisser2.png" id="14_857b3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x85lq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_84v1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_efs0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_87lix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fra5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_spq5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1k3jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_flypp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_86r1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s0itk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8kofr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7qedb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_71nss")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_rgmvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_857b3")
+}],
+"loop": true,
+"name": &"base",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqdeb"]
+size = Vector2(56, 54)
+
+[node name="Playerr" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_efs0n")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x85lq")
+animation = &"base"
+autoplay = "base"
+frame_progress = 0.97342634
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_vqdeb")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://psr4128r3u7w"]
+[gd_scene load_steps=29 format=3 uid="uid://psr4128r3u7w"]
 
 [ext_resource type="Script" uid="uid://bqlvdwdmdktx5" path="res://mainnode.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://bxcwdio6efho4" path="res://Космос (14).jpg" id="2_f0urt"]
@@ -6,10 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bn02j2b5mcegn" path="res://new-blocks-64.png" id="3_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://bw1cm46p6r0eu" path="res://mob.png" id="5_l6pdb"]
 [ext_resource type="Texture2D" uid="uid://dpte1mko6h4pl" path="res://fart64.png" id="5_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://cpvyxwfu4larq" path="res://portal_sprite.png" id="5_wt6go"]
 [ext_resource type="Texture2D" uid="uid://bsporhtrms41h" path="res://fart64-2.png" id="6_l6pdb"]
 [ext_resource type="Texture2D" uid="uid://cd5lh04ae7dsb" path="res://boykisser-logo.png" id="6_qn3nj"]
-[ext_resource type="Texture2D" uid="uid://cdj1om5v58t32" path="res://Border.png" id="7_l6pdb"]
+[ext_resource type="Texture2D" uid="uid://clsumf3cahd5" path="res://Fog-blocks.png" id="7_jfkdj"]
+[ext_resource type="Texture2D" uid="uid://dh0odrovyp3io" path="res://Border-anim-all2.png" id="9_jfkdj"]
 [ext_resource type="PackedScene" uid="uid://mx2bjjlu5u83" path="res://player.tscn" id="9_r657h"]
+[ext_resource type="PackedScene" uid="uid://dasftqpbgksix" path="res://playerr.tscn" id="12_436f3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bss38"]
 texture = ExtResource("2_tda05")
@@ -95,16 +98,43 @@ texture = ExtResource("3_qn3nj")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -11)
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -8)
 
 [sub_resource type="TileSet" id="TileSet_l6pdb"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(62, 50)
+occlusion_layer_0/light_mask = 1
 sources/2 = SubResource("TileSetAtlasSource_bss38")
 sources/3 = SubResource("TileSetAtlasSource_l6pdb")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmsyx"]
+texture = ExtResource("5_wt6go")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_speed = 10.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/animation_frame_8/duration = 1.0
+0:0/animation_frame_9/duration = 1.0
+0:0/animation_frame_10/duration = 1.0
+0:0/animation_frame_11/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_feppd"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(62, 50)
+sources/0 = SubResource("TileSetAtlasSource_cmsyx")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0urt"]
 texture = ExtResource("5_qn3nj")
@@ -116,12 +146,21 @@ texture = ExtResource("6_l6pdb")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcos8"]
+texture = ExtResource("7_jfkdj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_jfkdj"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(62, 50)
 sources/0 = SubResource("TileSetAtlasSource_f0urt")
 sources/1 = SubResource("TileSetAtlasSource_jfkdj")
+sources/2 = SubResource("TileSetAtlasSource_bcos8")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt6go"]
 texture = ExtResource("5_l6pdb")
@@ -135,9 +174,47 @@ tile_size = Vector2i(62, 50)
 sources/0 = SubResource("TileSetAtlasSource_wt6go")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_436f3"]
-texture = ExtResource("7_l6pdb")
+texture = ExtResource("9_jfkdj")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, -8)
+0:1/0/modulate = Color(18.892157, 0, 0, 1)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -8)
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, -8)
+1:0/animation_speed = 4.0
+1:0/animation_frame_0/duration = 1.0
+1:0/animation_frame_1/duration = 1.0
+1:0/animation_frame_2/duration = 1.0
+1:0/animation_frame_3/duration = 1.0
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -8)
+1:1/animation_speed = 4.0
+1:1/animation_frame_0/duration = 1.0
+1:1/animation_frame_1/duration = 1.0
+1:1/animation_frame_2/duration = 1.0
+1:1/animation_frame_3/duration = 1.0
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, -8)
+1:1/0/modulate = Color(18.892157, 0, 0, 0.78431374)
+1:2/animation_speed = 4.0
+1:2/animation_frame_0/duration = 1.0
+1:2/animation_frame_1/duration = 1.0
+1:2/animation_frame_2/duration = 1.0
+1:2/animation_frame_3/duration = 1.0
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, -8)
+1:3/animation_speed = 4.0
+1:3/animation_frame_0/duration = 1.0
+1:3/animation_frame_1/duration = 1.0
+1:3/animation_frame_2/duration = 1.0
+1:3/animation_frame_3/duration = 1.0
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, -8)
+1:3/0/modulate = Color(1, 1, 1, 0.78431374)
 
 [sub_resource type="TileSet" id="TileSet_bcos8"]
 tile_shape = 1
@@ -161,25 +238,29 @@ sources/1 = SubResource("TileSetAtlasSource_r657h")
 script = ExtResource("1_112p8")
 
 [node name="Космос(14)" type="Sprite2D" parent="."]
-position = Vector2(700, 456)
-scale = Vector2(0.4, 0.4)
+position = Vector2(801, 447)
+scale = Vector2(0.42, 0.42)
 texture = ExtResource("2_f0urt")
+metadata/_edit_lock_ = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
+[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
 [node name="TerrainMap" type="TileMapLayer" parent="."]
 position = Vector2(650, 200)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 3, 0, 4, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_l6pdb")
 metadata/_edit_lock_ = true
 
 [node name="ObjectMap" type="TileMapLayer" parent="."]
-visible = false
 position = Vector2(650, 185)
+tile_set = SubResource("TileSet_feppd")
 metadata/_edit_lock_ = true
 
 [node name="FartMap" type="TileMapLayer" parent="."]
-visible = false
-position = Vector2(650, 200)
+position = Vector2(650, 207)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_jfkdj")
 metadata/_edit_lock_ = true
 
@@ -189,7 +270,7 @@ tile_set = SubResource("TileSet_436f3")
 metadata/_edit_lock_ = true
 
 [node name="BorderMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 199)
+position = Vector2(650, 200)
 tile_set = SubResource("TileSet_bcos8")
 metadata/_edit_lock_ = true
 
@@ -233,8 +314,14 @@ offset_top = 715.0
 offset_right = 1350.0
 offset_bottom = 885.0
 
-[node name="Area2D" parent="." instance=ExtResource("9_r657h")]
-position = Vector2(600, 200)
+[node name="Playerr" parent="." instance=ExtResource("12_436f3")]
+position = Vector2(681, 210)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("9_r657h")]
+visible = false
+position = Vector2(681, 210)
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="ButtonUp" to="." method="_on_button_up_pressed"]
 [connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
