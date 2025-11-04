@@ -265,6 +265,7 @@ tile_set = SubResource("TileSet_jfkdj")
 metadata/_edit_lock_ = true
 
 [node name="MonsterMap" type="TileMapLayer" parent="."]
+visible = false
 position = Vector2(650, 174)
 tile_set = SubResource("TileSet_436f3")
 metadata/_edit_lock_ = true
@@ -275,6 +276,7 @@ tile_set = SubResource("TileSet_bcos8")
 metadata/_edit_lock_ = true
 
 [node name="PlayerMap" type="TileMapLayer" parent="."]
+visible = false
 position = Vector2(650, 180)
 tile_set = SubResource("TileSet_f0urt")
 metadata/_edit_lock_ = true
@@ -306,13 +308,6 @@ offset_top = 363.0
 offset_right = 1321.0
 offset_bottom = 413.0
 metadata/_edit_lock_ = true
-
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = 81.0
-offset_top = 715.0
-offset_right = 1350.0
-offset_bottom = 885.0
 
 [node name="Playerr" parent="." instance=ExtResource("12_436f3")]
 position = Vector2(681, 210)
