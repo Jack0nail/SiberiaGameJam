@@ -99,7 +99,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vm5xg")
 }],
-"loop": true,
+"loop": false,
 "name": &"down",
 "speed": 5.0
 }, {
@@ -141,7 +141,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e1soh")
 }],
-"loop": true,
+"loop": false,
 "name": &"up",
 "speed": 5.0
 }]
@@ -174,11 +174,11 @@ frame_progress = 0.12157681
 [node name="HP4" type="AnimatedSprite2D" parent="."]
 position = Vector2(165, 0)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"static"
-autoplay = "static"
+animation = &"static_hide"
+autoplay = "static_hide"
 
 [node name="HP5" type="AnimatedSprite2D" parent="."]
 position = Vector2(220, 0)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"static"
-autoplay = "static"
+animation = &"static_hide"
+autoplay = "static_hide"

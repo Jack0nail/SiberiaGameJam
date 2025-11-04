@@ -7,7 +7,9 @@ extends Node
 @onready var player_on_map = $Playerr
 @onready var enemy_on_map = $Enemy
 
-
+var is_art = true
+var art: Vector2i
+var port: Vector2i
 var xmap = 0
 var ymap = 0
 var cell_type_map: Dictionary[Vector2i,String]
@@ -43,14 +45,24 @@ func _on_request_completed(result, response_code, headers, body):
 				global_pos.y -= 15
 				enemy_on_map.global_position = global_pos
 				enemy_on_map.move(global_pos)
+			elif (i["cell_items"][0] == "PORTAL"):
+				port = Vector2i(i["x"],i["y"])
+				#object_map_layer.set_cell(Vector2i(i["x"],i["y"]), 0, Vector2i.ZERO)
+			elif (i["cell_items"][0] == "ARTIFACT"):
+				art = Vector2i(i["x"],i["y"])
+				
 				
 		terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(a, 0))
 		#Отрисовка тумана
-		if (player_on_map.pos == Vector2i(i["x"], i["y"])):
-			if (i["x"] == xmap-1 || i["y"] == ymap-1):
+		if (player_on_map.pos != Vector2i(i["x"], i["y"])):
+			if (i["x"] == xmap-1 && i["y"] == ymap-1):
 				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 0))
+			elif i["x"] == xmap-1:
+				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(2, 0))
+			elif i["y"] == ymap-1:
+				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(1, 0))
 			else:
-				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 0))
+				fart_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(0, 0))
 	fart_map_layer.erase_cell(Vector2i.ZERO)
 	reset_border(player_on_map.pos)
 	
@@ -133,3 +145,18 @@ func _process(delta: float) -> void:
 					print("hui")
 					cell_pos_global.y -= 15
 					player_on_map.move(Vector2(float(cell_pos_global.x), float(cell_pos_global.y)))
+					var mod_art = cell_cord - art
+					if (abs(mod_art.x)+abs(mod_art.y)==1 && is_art):
+						object_map_layer.set_cell(Vector2i(art), 1, Vector2i.ZERO)
+					if (cell_cord == art):
+						player_on_map.is_art = true
+						print("art")
+						object_map_layer.erase_cell(art)
+						is_art = false
+					var mod_port = cell_cord - port
+					if (abs(mod_port.x)+abs(mod_port.y)==1):
+						object_map_layer.set_cell(Vector2i(port), 0, Vector2i.ZERO)
+					if (cell_cord == port):
+						print("port")
+						is_move = false
+						$Label.show()

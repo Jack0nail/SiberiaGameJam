@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://psr4128r3u7w"]
+[gd_scene load_steps=20 format=4 uid="uid://psr4128r3u7w"]
 
 [ext_resource type="Script" uid="uid://bqlvdwdmdktx5" path="res://mainnode.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://bxcwdio6efho4" path="res://Космос (14).jpg" id="2_f0urt"]
 [ext_resource type="Texture2D" uid="uid://bn02j2b5mcegn" path="res://new-blocks-64.png" id="3_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://cwaabdhddh1ax" path="res://Rose-crystal.png" id="5_f0urt"]
 [ext_resource type="Texture2D" uid="uid://cpvyxwfu4larq" path="res://portal_sprite.png" id="5_wt6go"]
 [ext_resource type="Texture2D" uid="uid://clsumf3cahd5" path="res://Fog-blocks.png" id="7_jfkdj"]
 [ext_resource type="PackedScene" uid="uid://bic8e0vl0kbu6" path="res://enemy.tscn" id="8_l6pdb"]
@@ -28,6 +29,20 @@ tile_size = Vector2i(62, 50)
 occlusion_layer_0/light_mask = 1
 sources/0 = SubResource("TileSetAtlasSource_l6pdb")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcos8"]
+texture = ExtResource("7_jfkdj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jfkdj"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(62, 50)
+sources/0 = SubResource("TileSetAtlasSource_bcos8")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmsyx"]
 texture = ExtResource("5_wt6go")
 texture_region_size = Vector2i(64, 64)
@@ -46,25 +61,17 @@ texture_region_size = Vector2i(64, 64)
 0:0/animation_frame_11/duration = 1.0
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfkdj"]
+texture = ExtResource("5_f0urt")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_feppd"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(62, 50)
 sources/0 = SubResource("TileSetAtlasSource_cmsyx")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcos8"]
-texture = ExtResource("7_jfkdj")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jfkdj"]
-tile_shape = 1
-tile_layout = 5
-tile_size = Vector2i(62, 50)
-sources/0 = SubResource("TileSetAtlasSource_bcos8")
+sources/1 = SubResource("TileSetAtlasSource_jfkdj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_436f3"]
 texture = ExtResource("9_jfkdj")
@@ -134,15 +141,14 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAEAAAAAAAAAAEAAAAEAAAAAAAAAAIAAAAEAAA
 tile_set = SubResource("TileSet_l6pdb")
 metadata/_edit_lock_ = true
 
+[node name="FartMap" type="TileMapLayer" parent="."]
+position = Vector2(650, 207)
+tile_set = SubResource("TileSet_jfkdj")
+metadata/_edit_lock_ = true
+
 [node name="ObjectMap" type="TileMapLayer" parent="."]
 position = Vector2(650, 185)
 tile_set = SubResource("TileSet_feppd")
-metadata/_edit_lock_ = true
-
-[node name="FartMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 207)
-tile_map_data = PackedByteArray("AAAAAAAAAgADAAAAAAA=")
-tile_set = SubResource("TileSet_jfkdj")
 metadata/_edit_lock_ = true
 
 [node name="BorderMap" type="TileMapLayer" parent="."]
@@ -189,6 +195,15 @@ metadata/_edit_lock_ = true
 [node name="HP" parent="." instance=ExtResource("9_r657h")]
 position = Vector2(52, 42)
 scale = Vector2(1.5, 1.5)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 260.0
+offset_top = 193.0
+offset_right = 1260.0
+offset_bottom = 735.0
+theme_override_font_sizes/font_size = 300
+text = "Hui"
 
 [connection signal="pressed" from="ButtonUp" to="." method="_on_button_up_pressed"]
 [connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
