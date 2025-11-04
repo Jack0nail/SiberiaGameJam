@@ -82,13 +82,13 @@ func _on_button_pressed() -> void:
 	match $PanelContainer/BoxContainer/Control3/head.get("text"):
 		"Ивент 1:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Этот напиток разливается по вашему телу, согревая его своей остротой. Ваши рецепторы тут же взорвались, лицо покрылось испаринами, а тело, словно ракета, подлетело в небо, открывая вам виды вокруг. По приземлении, торговца вы уже не обнаружили.")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Ну и пойло")
 			$rezult.show()
 		"Ивент 2:":
 			pass
 		"Ивент 3:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Старик усмехается вашей глупости и произносит заклинание, отправляющее вас в полёт на дно пропасти. Полёт оказался, не такой долгий. Пропасть была 5 метров в высоту. Приземление было болезненное, а вылезти из этой дыры у вас займёт определенное время.")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Старый хрыч! И как выбираться?")
 			$rezult.show()
 		"Ивент 4:":
 			pass
@@ -96,19 +96,19 @@ func _on_button_pressed() -> void:
 			pass
 		"Ивент 6:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Вы провели отлично время в компании забавных человечков. Один даже пригласил вас в будущем на свадьбу своей внучки!")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Какие приятные дедки. Так когда там свадьба?")
 			$rezult.show()
 		"Ивент 7:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Когда вы помогли перенести бревно, желтый и коричневый бобры пришли к вам из общей массы, встали как люди и протянули лапу. \"Спасиб, мужик. Помог. Держи краба\". Пожав им лапу и уйдя дальше, вы чувствуете, как ваше тело окрепло.")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Где-то я этих бобров видел.. они крутые.")
 			$rezult.show()
 		"Ивент 8:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Менестрель воодушевился вашими историями и написал песню о вас, ваших приключениях и о том, какой вы смелый и могучий воин!")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Может забрать его на обратном пути?")
 			$rezult.show()
 		"Ивент 9:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Вы почесали собаку и оба остались довольны. :)")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Хороший мальчик!")
 			$rezult.show()
 		"Ивент 10:":
 			pass
@@ -118,13 +118,13 @@ func _on_button_2_pressed() -> void:
 	match $PanelContainer/BoxContainer/Control3/head.get("text"):
 		"Ивент 1:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Оставив позади этого безумца, вы направились дальше к своей цели.")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Не дай бог отравлюсь!")
 			$rezult.show()
 		"Ивент 2:":
 			pass
 		"Ивент 3:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Старик вопросительно смотрит на вас. \"Я не щнаю?\" После чего его какой-то силой выталкивает с моста вниз, в пропасть. Туман рассеивается, и вы видите, что пропасть оказалась не более чем ямой, на дне которой лежит старик. \"Ладно, твоя вщяла. Мощещь идти.\"")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","О как. Так какой ласточки?")
 			$rezult.show()
 		"Ивент 4:":
 			pass
@@ -132,23 +132,25 @@ func _on_button_2_pressed() -> void:
 			pass
 		"Ивент 6:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Вы решили оставить малышей позади, ведь у вас впереди бравый квест!")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Ну их, впереди меня ждёт приключение!")
 			$rezult.show()
 		"Ивент 7:":
-			pass
+			$rezult/BoxContainer/Control3/bodyText.set("text","Животные сами разберутся.")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Эти бобры выглядят круто, сами справятся.")
+			$rezult.show()
 		"Ивент 8:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Вы решили покрасоваться своим могучим телом. Вы увидели как огонь загорается в его глазах, а рука сама расписывает бумагу, повествуя  о невероятности вашей физической формы!")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Мне кажется он странно на меня смотрел.")
 			$rezult.show()
 		"Ивент 9:":
 			$rezult/BoxContainer/Control3/bodyText.set("text","Вы почесали собаку и оба остались довольны. :)")
-			$rezult/BoxContainer/Control2/Button_rez.set("text","О как")
+			$rezult/BoxContainer/Control2/Button_rez.set("text","Хороший мальчик!")
 			$rezult.show()
 		"Ивент 10:":
 			pass
 
 func _rannum():
-	if (randi()%100+1) <= 20:
+	if (randi()%100) <= 19:
 		$PanelContainer.show()
 
 	var numran = randi()%10 
@@ -164,7 +166,7 @@ func _rannum():
 		1:
 			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 2:")
 			$PanelContainer/BoxContainer/Control3/bodyText.set("text","По мере вашего продвижения у вас на пути оказывается завал. Обходить его придётся долго, проходить через него выйдет проблематично.")
-			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","И кто в этом виноват?!")
 			$PanelContainer/BoxContainer/Control2/Button2.hide()
 			$PanelContainer/BoxContainer/Control2/Button2.set("text","")
 			$PanelContainer/BoxContainer/Control2/Button3.hide()
@@ -179,14 +181,14 @@ func _rannum():
 		3:
 			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 4:")
 			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вы нашли поляну, полную сочных, ярких и красочных ягод. Вы решили сорвать немного себе в запас. Быть может, и варенье сварите.")
-			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","Оп, крыжопник...")
 			$PanelContainer/BoxContainer/Control2/Button2.hide()
 			$PanelContainer/BoxContainer/Control2/Button2.set("text","")
 			$PanelContainer/BoxContainer/Control2/Button3.hide()
 		4:
 			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 5:")
 			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вы проходите мимо палатки, из которой доносится металлический звон. Желая узнать, что в ней, вы увидели низкорослого, бородатого и широкого мужчину, сидящего (или стоящего? Тяжело из-за роста сказать наверняка) перед наковальней. Кузнец Георг, как он представился, любезно предложил заточить ваши когти. После его работы они сияют великолепием.")
-			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","Спасибо, старый дед!")
 			$PanelContainer/BoxContainer/Control2/Button2.hide()
 			$PanelContainer/BoxContainer/Control2/Button2.set("text","")
 			$PanelContainer/BoxContainer/Control2/Button3.hide()
@@ -221,9 +223,8 @@ func _rannum():
 		9:
 			$PanelContainer/BoxContainer/Control3/head.set("text","Ивент 10:")
 			$PanelContainer/BoxContainer/Control3/bodyText.set("text","Вы находите брошенный лагерь. Вы не знаете, кто или что стало причиной опустошения лагеря, но при осмотре места вы обнаружили карту окружающей местности. Сравнив картинку с окружением вы поняли, что карта нарисована предельно точно.")
-			$PanelContainer/BoxContainer/Control2/Button.set("text","О как")
+			$PanelContainer/BoxContainer/Control2/Button.set("text","А это полезно!")
 			$PanelContainer/BoxContainer/Control2/Button2.hide()
-			$PanelContainer/BoxContainer/Control2/Button2.set("text","Нет, лучше не доверять прохожим.\" (ничего не меняется) \"Вы пошли своим путём дальше, оставляя торговца позади")
 			$PanelContainer/BoxContainer/Control2/Button3.hide()
 
 func move_player(x:int, y:int) -> void:
@@ -295,8 +296,11 @@ func _on_button_rez_pressed() -> void:
 
 func _on_button_obuch_pressed() -> void:
 	match $obuch/BoxContainer/Control3/bodyText.get("text"):
-		"Привет! Я - Жорик, твой гид. Игра развивается, и ты сейчас находишься в стартовом билде. Каждый раз, как ты оказываешься в этих землях, ландшафт уникальный! Мы используем процедурную генерацию и систему событий, чтобы разнообразить твой опыт. Изначально идея задумывалась как мультиплеерная игра, в которой враги - другие игроки с той же целью, что и ты. Но за уложенные для геймджема сроки мы решили сделать синглплеерный билд. Если есть советы или предложения, комментарии на itch.io к твоему распоряжению.":
+		"	Привет! Я - Жорик, твой гид. Игра развивается, и ты сейчас находишься в стартовом билде. Каждый раз, как ты оказываешься в этих землях, ландшафт уникальный! Мы используем процедурную генерацию и систему событий, чтобы разнообразить твой опыт. Изначально идея задумывалась как мультиплеерная игра, в которой враги - другие игроки с той же целью, что и ты. Но за уложенные для геймджема сроки мы решили сделать синглплеерный билд. Если есть советы или предложения, комментарии на itch.io к твоему распоряжению.":
 			$obuch/BoxContainer/Control3/bodyText.set("text", "Ты - бравый рыцарь королевства Бойкисс. Тебя отправили на поиски священного Икосаэдра. Я тоже не знаю что это, но когда увидишь его - сразу поймёшь. Из этого места тебе просто так не выбраться. Артефакт впускает, но не выпускает. Где-то здесь присутствует портал. Он же твой единственный выход. Но и он не так прост, поверь моей бороде. Он выпустит только того, кто несет при себе священный Икоса.. камень. Но как только найдёшь этот камень, то все жители этого места объявят на тебя охоту. Пока ты странствуешь, ты можешь наткнуться на неожиданные встречи. Путник в беде или препятствие что мешает продвигаться. Но так даже интереснее. Ведь какой геройский поход остается геройским без проблем, которые герой преодолевает, да?")
 		"Ты - бравый рыцарь королевства Бойкисс. Тебя отправили на поиски священного Икосаэдра. Я тоже не знаю что это, но когда увидишь его - сразу поймёшь. Из этого места тебе просто так не выбраться. Артефакт впускает, но не выпускает. Где-то здесь присутствует портал. Он же твой единственный выход. Но и он не так прост, поверь моей бороде. Он выпустит только того, кто несет при себе священный Икоса.. камень. Но как только найдёшь этот камень, то все жители этого места объявят на тебя охоту. Пока ты странствуешь, ты можешь наткнуться на неожиданные встречи. Путник в беде или препятствие что мешает продвигаться. Но так даже интереснее. Ведь какой геройский поход остается геройским без проблем, которые герой преодолевает, да?":
 			$obuch/BoxContainer/Control3/bodyText.set("text", "Теперь я расскажу, как твой поход будет проходить. Действия в игре проходят пошагово. В свой ход ты можешь перемещаться, нападать и защищаться. У тебя есть здоровье в виде сердечек. Ты будешь его терять в сражениях или на случайных событиях. Восполнять их ты сможешь в ходе других случайных событий. Ещё, если повезёт, ты получишь бонус дополнительными сердечками. Они поверх твоих основных сердец и не смогут восстановиться после утраты. Ну и обзор. Эти земли покрыты туманом, из-за которого ты дальше своего носа мало что увидишь. Есть, конечно, способы увидеть больше, чем ты можешь сейчас, но тебе нужно будет их найти.")
- 
+		"Теперь я расскажу, как твой поход будет проходить. Действия в игре проходят пошагово. В свой ход ты можешь перемещаться, нападать и защищаться. У тебя есть здоровье в виде сердечек. Ты будешь его терять в сражениях или на случайных событиях. Восполнять их ты сможешь в ходе других случайных событий. Ещё, если повезёт, ты получишь бонус дополнительными сердечками. Они поверх твоих основных сердец и не смогут восстановиться после утраты. Ну и обзор. Эти земли покрыты туманом, из-за которого ты дальше своего носа мало что увидишь. Есть, конечно, способы увидеть больше, чем ты можешь сейчас, но тебе нужно будет их найти.":
+			$obuch/BoxContainer/Control3/bodyText.set("text", "Ну, братишка, я основные моменты тебе обрисовал, дальше ты сам по себе. Ты мне уже как сын. Всё, не надо слёз, дуй за своим сокровищем. Удачи!")
+		"Ну, братишка, я основные моменты тебе обрисовал, дальше ты сам по себе. Ты мне уже как сын. Всё, не надо слёз, дуй за своим сокровищем. Удачи!":
+			$obuch.hide()
