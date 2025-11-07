@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 80.0
+const SPEED = 100.0
 @onready var target = position
 var pos:= Vector2i.ZERO
 

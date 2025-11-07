@@ -1,80 +1,82 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctev23als233s"]
+[gd_scene load_steps=21 format=3 uid="uid://ctev23als233s"]
 
 [ext_resource type="Script" uid="uid://csrnld1njwoc0" path="res://hp.gd" id="1_bji2y"]
-[ext_resource type="Texture2D" uid="uid://dyitq3d5po6j6" path="res://Heart-beat.png" id="1_emhcy"]
-[ext_resource type="Texture2D" uid="uid://b08uv7aj854u6" path="res://Heal-heart2.png" id="2_bji2y"]
+[ext_resource type="Texture2D" uid="uid://bwf6kywo3j881" path="res://all128.png" id="2_emhcy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bji2y"]
+atlas = ExtResource("2_emhcy")
+region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsnqx"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(0, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(128, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5big"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(64, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(256, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4wnk"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(128, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(384, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_826j4"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(192, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(512, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1tt53"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(256, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(640, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0vq10"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(320, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(768, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcuvm"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(384, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(896, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vm5xg"]
-atlas = ExtResource("1_emhcy")
-region = Rect2(448, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7gms"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(448, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(0, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk06h"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(0, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(128, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uumik"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(64, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(256, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5v7p"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(128, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(384, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcgp3"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(192, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(512, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoufj"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(256, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(640, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cn1pv"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(320, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(768, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2r4o"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1soh"]
-atlas = ExtResource("2_bji2y")
-region = Rect2(448, 0, 64, 64)
+atlas = ExtResource("2_emhcy")
+region = Rect2(896, 256, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sdxke"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bji2y")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fsnqx")
 }, {
@@ -95,9 +97,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pcuvm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vm5xg")
 }],
 "loop": false,
 "name": &"down",
@@ -105,7 +104,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y7gms")
+"texture": SubResource("AtlasTexture_vm5xg")
 }],
 "loop": true,
 "name": &"static",
@@ -117,6 +116,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7gms")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sk06h")
 }, {
@@ -137,9 +139,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f2r4o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e1soh")
 }],
 "loop": false,
 "name": &"up",
@@ -152,13 +151,14 @@ metadata/_edit_vertical_guides_ = [-20.0]
 metadata/_edit_horizontal_guides_ = [19.0]
 
 [node name="HP1" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"static"
 autoplay = "static"
-frame_progress = 0.12157681
 
 [node name="HP2" type="AnimatedSprite2D" parent="."]
 position = Vector2(55, 0)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"static"
 autoplay = "static"
@@ -166,6 +166,7 @@ frame_progress = 0.12157681
 
 [node name="HP3" type="AnimatedSprite2D" parent="."]
 position = Vector2(110, 0)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"static"
 autoplay = "static"
@@ -173,12 +174,14 @@ frame_progress = 0.12157681
 
 [node name="HP4" type="AnimatedSprite2D" parent="."]
 position = Vector2(165, 0)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"static_hide"
 autoplay = "static_hide"
 
 [node name="HP5" type="AnimatedSprite2D" parent="."]
 position = Vector2(220, 0)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"static_hide"
 autoplay = "static_hide"

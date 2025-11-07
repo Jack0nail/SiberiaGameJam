@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvi8y4qx5sh33"
-path="res://.godot/imported/Boykisser-attack12.png-aad5b8d34a9bbbfa44947f8958488427.ctex"
+uid="uid://cpcj5b0nxh4py"
+path="res://.godot/imported/Fog-blocks128.png-6af2633ee6f97551704e9df8fac06992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boykisser_attack/Boykisser-attack12.png"
-dest_files=["res://.godot/imported/Boykisser-attack12.png-aad5b8d34a9bbbfa44947f8958488427.ctex"]
+source_file="res://Fog-blocks128.png"
+dest_files=["res://.godot/imported/Fog-blocks128.png-6af2633ee6f97551704e9df8fac06992.ctex"]
 
 [params]
 
