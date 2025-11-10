@@ -225,7 +225,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqdeb"]
-size = Vector2(6, 6)
+size = Vector2(0, 0)
 
 [node name="Playerr" type="CharacterBody2D"]
 motion_mode = 1

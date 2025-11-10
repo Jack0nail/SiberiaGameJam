@@ -134,7 +134,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqdeb"]
-size = Vector2(8, 8)
+size = Vector2(0, 0)
 
 [node name="Enemy" type="CharacterBody2D"]
 motion_mode = 1
@@ -147,5 +147,4 @@ animation = &"damage"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_vqdeb")

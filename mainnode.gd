@@ -5,6 +5,7 @@ extends Node
 @onready var border_map_layer: TileMapLayer = $BorderMap
 @onready var player_on_map = $Playerr
 @onready var enemy_on_map = $Enemy
+@onready var hp = $HP
 
 var is_art = true
 var art: Vector2i
@@ -18,17 +19,20 @@ var is_move: bool = true
 func _ready() -> void:
 	#download map
 	$HTTPRequest.request_completed.connect(_on_request_completed)
-	$HTTPRequest.request("https://peak.e-dt.ru/maps/gen_map")
+	$HTTPRequest.request("https://peak.e-dt.ru/maps/get_map/2")
+	#$HTTPRequest.request("https://peak.e-dt.ru/maps/gen_map")
 				
 func _on_request_completed(result, response_code, headers, body):
 	#json read
-	var json2 = JSON.parse_string(body.get_string_from_utf8())
-	var id = json2["map"]
-	var json = id
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	#var json = json2["map"]
 	xmap = json["size"]["width"]
 	ymap = json["size"]["height"]
 	
-	#player set pos
+	terrain_map_layer.clear()
+	object_map_layer.clear()
+	border_map_layer.clear()
+	#player start set pos
 	player_on_map.pos = Vector2i.ZERO
 	var global_pos2 = terrain_map_layer.to_global(terrain_map_layer.map_to_local(player_on_map.pos))
 	global_pos2.y -= 15
@@ -41,12 +45,12 @@ func _on_request_completed(result, response_code, headers, body):
 		#drow start cell
 		if i["x"] == 0 && i["y"] == 0:
 			if i["cell_type"] == "S":
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(4, 9))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(4,9))
 			else:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(1, 9))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(1,9))
 				
 		if (i["cell_items"].size() != 0):
-			#enemy set pos
+			#enemy start set pos
 			if (i["cell_items"][0] == "ANGRY_PERSON"):
 				enemy_on_map.pos = Vector2i(i["x"],i["y"])
 				var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(enemy_on_map.pos))
@@ -93,7 +97,22 @@ func reset_border(coodr: Vector2i) -> void:
 		var pos = coodr
 		pos.y -= 1
 		border_map_layer.set_cell(pos, 0, Vector2i(1,16))
+		
+func _hp_down() -> void:
+	hp.change_hp(-2)
 	
+func _hp_down_1() -> void:
+	hp.change_hp(-1)
+	
+func _hp_up() -> void:
+	hp.change_hp(2)
+	
+func _hp_up_1() -> void:
+	hp.change_hp(1)
+	
+func refresh_hp() -> void:
+	hp.refresh()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_move:
@@ -107,9 +126,9 @@ func _process(delta: float) -> void:
 					player_on_map.pos = cell_cord
 					terrain_map_layer.erase_cell(cell_cord)
 					if cell_type_map.get(cell_cord) == "S":
-						terrain_map_layer.set_cell(cell_cord, 0, Vector2i(4, 9))
+						terrain_map_layer.set_cell(cell_cord, 0, Vector2i(4,9))
 					else:
-						terrain_map_layer.set_cell(cell_cord, 0, Vector2i(1, 9))
+						terrain_map_layer.set_cell(cell_cord, 0, Vector2i(1,9))
 					reset_border(cell_cord)
 					var cell_pos_global = terrain_map_layer.to_global(terrain_map_layer.map_to_local(cell_cord))
 					#print(cell_pos_global)

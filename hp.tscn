@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctev23als233s"]
+[gd_scene load_steps=22 format=3 uid="uid://ctev23als233s"]
 
 [ext_resource type="Script" uid="uid://csrnld1njwoc0" path="res://hp.gd" id="1_bji2y"]
 [ext_resource type="Texture2D" uid="uid://bwf6kywo3j881" path="res://all128.png" id="2_emhcy"]
@@ -34,6 +34,10 @@ region = Rect2(768, 128, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcuvm"]
 atlas = ExtResource("2_emhcy")
 region = Rect2(896, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emhcy"]
+atlas = ExtResource("2_emhcy")
+region = Rect2(0, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vm5xg"]
 atlas = ExtResource("2_emhcy")
@@ -100,20 +104,28 @@ animations = [{
 }],
 "loop": false,
 "name": &"down",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emhcy")
+}],
+"loop": true,
+"name": &"static_down",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"static_hide",
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vm5xg")
 }],
 "loop": true,
-"name": &"static",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"static_hide",
-"speed": 5.0
+"name": &"static_up",
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -142,7 +154,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"up",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="HP" type="Node2D"]
@@ -153,31 +165,29 @@ metadata/_edit_horizontal_guides_ = [19.0]
 [node name="HP1" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"static"
-autoplay = "static"
+animation = &"static_up"
+autoplay = "static_up"
 
 [node name="HP2" type="AnimatedSprite2D" parent="."]
 position = Vector2(55, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"static"
-autoplay = "static"
-frame_progress = 0.12157681
+animation = &"static_up"
+autoplay = "static_up"
 
 [node name="HP3" type="AnimatedSprite2D" parent="."]
 position = Vector2(110, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"static"
-autoplay = "static"
-frame_progress = 0.12157681
+animation = &"down"
+autoplay = "static_up"
 
 [node name="HP4" type="AnimatedSprite2D" parent="."]
 position = Vector2(165, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"static_hide"
-autoplay = "static_hide"
+animation = &"static_up"
+autoplay = "static_up"
 
 [node name="HP5" type="AnimatedSprite2D" parent="."]
 position = Vector2(220, 0)
@@ -185,3 +195,9 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"static_hide"
 autoplay = "static_hide"
+
+[connection signal="animation_finished" from="HP1" to="." method="_anim_finish"]
+[connection signal="animation_finished" from="HP2" to="." method="_anim_finish"]
+[connection signal="animation_finished" from="HP3" to="." method="_anim_finish"]
+[connection signal="animation_finished" from="HP4" to="." method="_anim_finish"]
+[connection signal="animation_finished" from="HP5" to="." method="_anim_finish"]
