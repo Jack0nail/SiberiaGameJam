@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 100.0
 @onready var target = position
 var pos:= Vector2i.ZERO
-
+var hp = 2
 
 func move(new_pos: Vector2) -> void:
 	target = new_pos

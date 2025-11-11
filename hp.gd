@@ -7,10 +7,7 @@ var last_change = 2
 var is_not_anim = true
 var is_not_game_over = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	refresh()
-	
+## clear change
 func refresh() -> void:
 	num_hp = 2
 	cur_num = 0
@@ -33,18 +30,15 @@ func _anim_finish() -> void:
 		if array_hp[last_change].get_animation() == "down":
 			array_hp[last_change].hide()
 	reset_hp()
-	return
 
 func reset_hp() -> void:
-	print(num_hp+cur_num)
-	print(cur_num)
-	print(last_change)
-	print("_")
 	if is_not_game_over:
 		if cur_num > 0:
+			
+			## hp increase
 			if num_hp + 1 < 5:
 				is_not_anim = false
-				num_hp+=1
+				num_hp += 1
 				cur_num -= 1
 				last_change = num_hp
 				array_hp[num_hp].play("up")
@@ -53,24 +47,25 @@ func reset_hp() -> void:
 			else:
 				is_not_anim = true
 				cur_num = 0
+			
 		elif cur_num < 0:
+			
+			## hp decrease
 			if num_hp - 1 > -1:
 				is_not_anim = false
 				last_change = num_hp
 				array_hp[num_hp].play("down")
-				num_hp-=1
+				num_hp -= 1
 				cur_num += 1
 			elif num_hp - 1 == -1:
-				#game over
+				
+				## game over
 				is_not_game_over = false
 				array_hp[num_hp].play("down")
 				num_hp-=1
 				$"../Label".show()
+				
+		## not change
 		else:
 			is_not_anim = true
 			cur_num = 0
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
