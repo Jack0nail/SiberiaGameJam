@@ -1,726 +1,113 @@
-[gd_scene load_steps=81 format=3 uid="uid://dglb5fcxg2ohy"]
+[gd_scene load_steps=43 format=4 uid="uid://03yjnu1xbf3w"]
 
 [ext_resource type="Script" uid="uid://bqlvdwdmdktx5" path="res://scripts/mainnode.gd" id="1_112p8"]
-[ext_resource type="Texture2D" uid="uid://coaf2xikeqad7" path="res://textures/all-blocks-32.png" id="2_e2u21"]
-[ext_resource type="Texture2D" uid="uid://hd4qwjkppahq" path="res://textures/TX Tileset Grass.png" id="3_bss38"]
-[ext_resource type="Texture2D" uid="uid://3celi1dyi12g" path="res://textures/all-blocks-64.png" id="4_e2u21"]
-[ext_resource type="Texture2D" uid="uid://c4kfp1rm1tvuv" path="res://textures/fart64.png" id="5_qn3nj"]
-[ext_resource type="Texture2D" uid="uid://bmcpd83nbmdfs" path="res://textures/fart64-2 (2).png" id="6_qn3nj"]
-[ext_resource type="Texture2D" uid="uid://bymvkt3n37gh2" path="res://textures/70x70.png" id="8_l6pdb"]
-[ext_resource type="Texture2D" uid="uid://dudjvi3ccsck8" path="res://textures/chevron_big_left_white.png" id="9_wt6go"]
+[ext_resource type="Texture2D" uid="uid://l1q214wxbba0" path="res://textures/IMG_5659.PNG" id="2_l6pdb"]
+[ext_resource type="Texture2D" uid="uid://dkk8erwr4bbtp" path="res://textures/all128.png" id="3_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://bv0wm47scu5c" path="res://textures/gem64.png" id="4_qn3nj"]
+[ext_resource type="Texture2D" path="res://textures/70x70.png" id="8_0i6v8"]
+[ext_resource type="PackedScene" uid="uid://dxca46vv61m1n" path="res://scene/enemy.tscn" id="8_l6pdb"]
+[ext_resource type="PackedScene" uid="uid://c2ssrgbfnk2il" path="res://scene/hp.tscn" id="9_r657h"]
+[ext_resource type="Texture2D" uid="uid://cuwktx2wetkxp" path="res://textures/chevron_big_left_white.png" id="9_wt6go"]
 [ext_resource type="FontFile" uid="uid://bk3kqlj53r8i7" path="res://fonts/InterTight-SemiBold.ttf" id="10_jfkdj"]
 [ext_resource type="FontFile" uid="uid://bknomlt0rqiqy" path="res://fonts/InterTight-Medium.ttf" id="11_wt6go"]
-[ext_resource type="PackedScene" uid="uid://dpwvsxa7v8htg" path="res://scene/playerr.tscn" id="12_436f3"]
-[ext_resource type="Texture2D" uid="uid://c1xmknewa72ug" path="res://textures/Sprite-1213-Sheet.png" id="13_436f3"]
+[ext_resource type="PackedScene" uid="uid://dasftqpbgksix" path="res://scene/playerr.tscn" id="12_436f3"]
+[ext_resource type="Texture2D" uid="uid://cg4ryqmx2fb4f" path="res://textures/Sprite-1213-Sheet.png" id="13_436f3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
-texture = ExtResource("4_e2u21")
-margins = Vector2i(1, 0)
-texture_region_size = Vector2i(63, 64)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-12:0/0 = 0
-13:0/0 = 0
-14:0/0 = 0
-15:0/0 = 0
-16:0/0 = 0
-17:0/0 = 0
-18:0/0 = 0
-19:0/0 = 0
-20:0/0 = 0
-21:0/0 = 0
-22:0/0 = 0
-23:0/0 = 0
-24:0/0 = 0
-25:0/0 = 0
-26:0/0 = 0
-27:0/0 = 0
-28:0/0 = 0
-29:0/0 = 0
-30:0/0 = 0
-31:0/0 = 0
-32:0/0 = 0
-33:0/0 = 0
-34:0/0 = 0
-35:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-14:1/0 = 0
-15:1/0 = 0
-16:1/0 = 0
-17:1/0 = 0
-18:1/0 = 0
-19:1/0 = 0
-20:1/0 = 0
-21:1/0 = 0
-22:1/0 = 0
-23:1/0 = 0
-24:1/0 = 0
-25:1/0 = 0
-26:1/0 = 0
-27:1/0 = 0
-28:1/0 = 0
-29:1/0 = 0
-30:1/0 = 0
-31:1/0 = 0
-32:1/0 = 0
-33:1/0 = 0
-34:1/0 = 0
-35:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qn3nj"]
-texture = ExtResource("2_e2u21")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:1/0 = 0
-0:2/0 = 0
-0:3/0 = 0
-0:4/0 = 0
-0:5/0 = 0
-0:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-2:5/0 = 0
-2:4/0 = 0
-2:3/0 = 0
-2:2/0 = 0
-1:2/0 = 0
-1:1/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-3:1/0 = 0
-2:1/0 = 0
-6:1/0 = 0
-6:2/0 = 0
-5:2/0 = 0
-4:2/0 = 0
-4:1/0 = 0
-7:0/0 = 0
-7:1/0 = 0
-7:2/0 = 0
-5:1/0 = 0
-7:3/0 = 0
-6:4/0 = 0
-5:5/0 = 0
-4:5/0 = 0
-3:5/0 = 0
-3:2/0 = 0
-6:3/0 = 0
-5:4/0 = 0
-4:3/0 = 0
-3:4/0 = 0
-1:5/0 = 0
-1:3/0 = 0
-3:3/0 = 0
-4:4/0 = 0
-3:6/0 = 0
-1:4/0 = 0
-5:3/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-7:6/0 = 0
-7:7/0 = 0
-6:7/0 = 0
-5:7/0 = 0
-5:6/0 = 0
-4:6/0 = 0
-7:4/0 = 0
-6:6/0 = 0
-4:7/0 = 0
-3:7/0 = 0
-2:7/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-12:0/0 = 0
-13:0/0 = 0
-14:0/0 = 0
-15:0/0 = 0
-16:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bss38"]
-texture = ExtResource("3_bss38")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-12:0/0 = 0
-13:0/0 = 0
-14:0/0 = 0
-15:0/0 = 0
-16:0/0 = 0
-17:0/0 = 0
-18:0/0 = 0
-19:0/0 = 0
-20:0/0 = 0
-21:0/0 = 0
-22:0/0 = 0
-23:0/0 = 0
-24:0/0 = 0
-25:0/0 = 0
-26:0/0 = 0
-27:0/0 = 0
-28:0/0 = 0
-29:0/0 = 0
-30:0/0 = 0
-31:0/0 = 0
-32:0/0 = 0
-33:0/0 = 0
-34:0/0 = 0
-35:0/0 = 0
-36:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-14:1/0 = 0
-15:1/0 = 0
-16:1/0 = 0
-17:1/0 = 0
-18:1/0 = 0
-19:1/0 = 0
-20:1/0 = 0
-21:1/0 = 0
-22:1/0 = 0
-23:1/0 = 0
-24:1/0 = 0
-25:1/0 = 0
-26:1/0 = 0
-27:1/0 = 0
-28:1/0 = 0
-29:1/0 = 0
-30:1/0 = 0
-31:1/0 = 0
-32:1/0 = 0
-33:1/0 = 0
-34:1/0 = 0
-35:1/0 = 0
-36:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6pdb"]
+texture = ExtResource("3_qn3nj")
+texture_region_size = Vector2i(128, 128)
+1:9/0 = 0
+1:9/0/texture_origin = Vector2i(0, -15)
+4:9/0 = 0
+4:9/0/texture_origin = Vector2i(0, -15)
+0:9/0 = 0
+0:9/0/texture_origin = Vector2i(0, -15)
+2:9/0 = 0
+2:9/0/texture_origin = Vector2i(0, -15)
+3:9/0 = 0
+3:9/0/texture_origin = Vector2i(0, -15)
+5:9/0 = 0
+5:9/0/texture_origin = Vector2i(0, -21)
 
 [sub_resource type="TileSet" id="TileSet_l6pdb"]
 tile_shape = 1
 tile_layout = 5
-tile_size = Vector2i(62, 50)
-sources/0 = SubResource("TileSetAtlasSource_tda05")
-sources/1 = SubResource("TileSetAtlasSource_qn3nj")
-sources/2 = SubResource("TileSetAtlasSource_bss38")
+tile_size = Vector2i(128, 96)
+occlusion_layer_0/light_mask = 1
+sources/0 = SubResource("TileSetAtlasSource_l6pdb")
 
-[sub_resource type="TileSet" id="TileSet_wt6go"]
-tile_shape = 1
-tile_layout = 5
-tile_size = Vector2i(62, 50)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmsyx"]
+texture = ExtResource("3_qn3nj")
+texture_region_size = Vector2i(128, 128)
+0:0/animation_speed = 10.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/animation_frame_8/duration = 1.0
+0:0/animation_frame_9/duration = 1.0
+0:0/animation_frame_10/duration = 1.0
+0:0/animation_frame_11/duration = 1.0
+0:0/0 = 0
+0:10/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0urt"]
-texture = ExtResource("5_qn3nj")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r657h"]
+texture = ExtResource("4_qn3nj")
 texture_region_size = Vector2i(64, 64)
+0:0/animation_speed = 1.5
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6pdb"]
-texture = ExtResource("6_qn3nj")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jfkdj"]
+[sub_resource type="TileSet" id="TileSet_feppd"]
 tile_shape = 1
 tile_layout = 5
-tile_size = Vector2i(62, 50)
-sources/0 = SubResource("TileSetAtlasSource_f0urt")
-sources/1 = SubResource("TileSetAtlasSource_l6pdb")
+tile_size = Vector2i(128, 96)
+sources/0 = SubResource("TileSetAtlasSource_cmsyx")
+sources/1 = SubResource("TileSetAtlasSource_r657h")
 
-[sub_resource type="TileSet" id="TileSet_436f3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_436f3"]
+texture = ExtResource("3_qn3nj")
+texture_region_size = Vector2i(128, 128)
+0:13/0 = 0
+0:13/0/texture_origin = Vector2i(0, -15)
+0:14/0 = 0
+0:14/0/texture_origin = Vector2i(0, -15)
+0:16/0 = 0
+0:16/0/texture_origin = Vector2i(0, -15)
+1:13/animation_speed = 3.0
+1:13/animation_frame_0/duration = 1.0
+1:13/animation_frame_1/duration = 1.0
+1:13/animation_frame_2/duration = 1.0
+1:13/animation_frame_3/duration = 1.0
+1:13/0 = 0
+1:13/0/texture_origin = Vector2i(0, -15)
+1:14/animation_speed = 3.0
+1:14/animation_frame_0/duration = 1.0
+1:14/animation_frame_1/duration = 1.0
+1:14/animation_frame_2/duration = 1.0
+1:14/animation_frame_3/duration = 1.0
+1:14/0 = 0
+1:14/0/texture_origin = Vector2i(0, -15)
+1:16/animation_speed = 3.0
+1:16/animation_frame_0/duration = 1.0
+1:16/animation_frame_1/duration = 1.0
+1:16/animation_frame_2/duration = 1.0
+1:16/animation_frame_3/duration = 1.0
+1:16/0 = 0
+1:16/0/texture_origin = Vector2i(0, -15)
+
+[sub_resource type="TileSet" id="TileSet_bcos8"]
 tile_shape = 1
 tile_layout = 5
-tile_size = Vector2i(62, 50)
+tile_size = Vector2i(128, 96)
+sources/0 = SubResource("TileSetAtlasSource_436f3")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8r58"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_762b4"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yaeo"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qopjo"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idbes"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6f3v"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm83v"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwiel"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iojcs"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqu2x"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajor3"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c14tr"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqfnc"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jewq"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xwg0"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85l3h"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j31fo"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6fs4"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twhnx"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sps8e"]
-bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnlop"]
-bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oaeeq"]
-bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey15c"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1837"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qv2vy"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1am0g"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wy2p"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6pri"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nha2g"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bn0x"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7n71"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prngn"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq5fo"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rl2iq"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_644nv"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knmac"]
-bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeaoo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyurn"]
 bg_color = Color(0, 0, 0, 0.5882353)
 border_width_left = 2
 border_width_top = 2
@@ -736,22 +123,22 @@ expand_margin_top = 40.0
 expand_margin_right = 40.0
 expand_margin_bottom = 40.0
 
-[sub_resource type="Theme" id="Theme_r657h"]
+[sub_resource type="Theme" id="Theme_6lh7w"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jfkdj"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1hbs0"]
 blend_mode = 4
 
-[sub_resource type="Theme" id="Theme_f0urt"]
+[sub_resource type="Theme" id="Theme_7x8fr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_f0urt"]
+[sub_resource type="LabelSettings" id="LabelSettings_2y2sp"]
 font = ExtResource("11_wt6go")
 font_size = 35
 outline_size = 10
 outline_color = Color(1, 1, 1, 0)
 
-[sub_resource type="Theme" id="Theme_jfkdj"]
+[sub_resource type="Theme" id="Theme_rsdyk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wt6go"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ken75"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
@@ -760,7 +147,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcos8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqttp"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -768,7 +155,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gykuw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l64r"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -776,7 +163,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfkdj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiatl"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -784,7 +171,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feppd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hgl6"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -792,7 +179,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_436f3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v23c4"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -800,7 +187,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d05gg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6m5xv"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -808,7 +195,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmsyx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjwxm"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -816,14 +203,14 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jbxr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1hl6"]
 border_blend = true
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edwr0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2hrd"]
 bg_color = Color(0.17254902, 0.48235294, 0.8980392, 1)
 border_blend = true
 corner_radius_top_left = 12
@@ -831,7 +218,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql1ih"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2v4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcos8"]
 atlas = ExtResource("13_436f3")
@@ -853,7 +240,7 @@ region = Rect2(192, 0, 64, 64)
 atlas = ExtResource("13_436f3")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bnlop"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_tp5mi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -879,128 +266,96 @@ animations = [{
 [node name="MainNode" type="Node"]
 script = ExtResource("1_112p8")
 
+[node name="Космос(14)" type="Sprite2D" parent="."]
+position = Vector2(700.4, 450.70004)
+scale = Vector2(0.72979164, 0.5785898)
+texture = ExtResource("2_l6pdb")
+metadata/_edit_lock_ = true
+
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="HTTPRequest2" type="HTTPRequest" parent="."]
-
 [node name="TerrainMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 200)
+position = Vector2(650, 50)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAAJAAkAAAAEAAkAAAAIAAkAAAABAAkAAAAHAAkAAAABAAkAAAAGAAkAAAABAAkAAAAFAAkAAAAEAAkAAAAEAAkAAAAEAAkAAAADAAkAAAABAAkAAAACAAkAAAABAAkAAAABAAkAAAABAAkAAAAAAAgAAAABAAkAAAAAAAcAAAABAAkAAAAAAAkAAAAEAAkAAAAAAAYAAAABAAkAAAAAAAUAAAAEAAkAAAABAAQAAAABAAkAAAABAAAAAAABAAkAAAAAAAEAAAABAAkAAAAAAAIAAAABAAkAAAAAAAAAAAAEAAkAAAAAAAMAAAABAAkAAAAAAAQAAAAEAAkAAAACAAAAAAABAAkAAAAEAAAAAAAEAAkAAAAEAAEAAAABAAkAAAAEAAIAAAABAAkAAAAEAAMAAAABAAkAAAACAAQAAAABAAkAAAAFAAQAAAAEAAkAAAAEAAQAAAAEAAkAAAADAAQAAAABAAkAAAADAAAAAAABAAkAAAAFAAAAAAAEAAkAAAAGAAAAAAABAAkAAAAHAAAAAAABAAkAAAAIAAAAAAABAAkAAAAJAAAAAAAEAAkAAAAJAAEAAAABAAkAAAAJAAIAAAABAAkAAAAJAAYAAAABAAkAAAAJAAcAAAABAAkAAAAHAAUAAAABAAkAAAAJAAMAAAABAAkAAAAJAAQAAAAEAAkAAAAJAAUAAAAEAAkAAAAJAAgAAAABAAkAAAAFAAcAAAABAAkAAAAFAAYAAAABAAkAAAAFAAUAAAAEAAkAAAAFAAgAAAABAAkAAAAEAAUAAAAEAAkAAAAIAAUAAAABAAkAAAAGAAUAAAABAAkAAAAEAP//AAAFAAkAAAAFAP//AAAEAAkAAAAFAP7/AAAEAAkAAAAEAP7/AAAFAAkAAAADAP//AAAEAAkAAAADAP7/AAAEAAkAAAAEAP3/AAAEAAkAAAAFAP3/AAAEAAkAAAADAP3/AAAEAAkAAAABAAEAAAABAAkAAAACAAEAAAABAAkAAAADAAEAAAABAAkAAAADAAIAAAABAAkAAAACAAIAAAABAAkAAAABAAIAAAABAAkAAAABAAMAAAABAAkAAAACAAMAAAABAAkAAAADAAMAAAABAAkAAAAGAP//AAAFAAkAAAAGAP7/AAAFAAkAAAAGAP3/AAAFAAkAAAA=")
 tile_set = SubResource("TileSet_l6pdb")
 metadata/_edit_lock_ = true
 
 [node name="ObjectMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 185)
-tile_set = SubResource("TileSet_wt6go")
-metadata/_edit_lock_ = true
-
-[node name="FartMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 207)
-tile_set = SubResource("TileSet_jfkdj")
+position = Vector2(650, 35)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAABAAQAAAAAAAoAAAACAAMAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_feppd")
 metadata/_edit_lock_ = true
 
 [node name="BorderMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 200)
-tile_set = SubResource("TileSet_436f3")
+position = Vector2(650, 50)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAAEAAQAAAAAAA4AAAAFAAUAAAABABAAAAAEAAMAAAAAAA0AAAAEAAUAAAAAABAAAAAFAAQAAAABAA4AAAAFAAMAAAABAA0AAAA=")
+tile_set = SubResource("TileSet_bcos8")
+metadata/_edit_lock_ = true
 
-[node name="ButtonUpRight" type="Button" parent="."]
+[node name="Playerr4" parent="." instance=ExtResource("12_436f3")]
+position = Vector2(-200, 400)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_lock_ = true
+
+[node name="Playerr3" parent="." instance=ExtResource("12_436f3")]
+position = Vector2(-200, 300)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_lock_ = true
+
+[node name="Playerr2" parent="." instance=ExtResource("12_436f3")]
+position = Vector2(-200, 200)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("8_l6pdb")]
+position = Vector2(-200, 0)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_lock_ = true
+
+[node name="Playerr" parent="." instance=ExtResource("12_436f3")]
+position = Vector2(-200, 100)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_lock_ = true
+
+[node name="HP" parent="." instance=ExtResource("9_r657h")]
+position = Vector2(52, 42)
+scale = Vector2(1.5, 1.5)
+metadata/_edit_lock_ = true
+
+[node name="Button2" type="Button" parent="."]
 visible = false
-offset_left = 1235.0
-offset_top = 223.0
-offset_right = 1285.0
-offset_bottom = 273.0
+offset_left = 281.0
+offset_top = 242.0
+offset_right = 1112.0
+offset_bottom = 661.0
+theme_override_font_sizes/font_size = 100
+text = "Красава Можем повторить)"
+autowrap_mode = 2
+metadata/_edit_lock_ = true
 
-[node name="ButtonRightUp" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
 visible = false
-offset_left = 1326.0
-offset_top = 294.0
-offset_right = 1376.0
-offset_bottom = 344.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_i8r58")
+offset_left = 361.0
+offset_top = 302.0
+offset_right = 1043.0
+offset_bottom = 625.0
+theme_override_font_sizes/font_size = 100
+text = "Слился? жми сюды"
+autowrap_mode = 2
+metadata/_edit_lock_ = true
 
-[node name="ButtonDownLeft" type="Button" parent="."]
+[node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 1244.0
-offset_top = 425.0
-offset_right = 1294.0
-offset_bottom = 475.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_762b4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3yaeo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qopjo")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_idbes")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_a6f3v")
-theme_override_styles/focus = SubResource("StyleBoxFlat_nm83v")
-
-[node name="ButtonLeftDown" type="Button" parent="."]
-visible = false
-offset_left = 1138.0
-offset_top = 324.0
-offset_right = 1188.0
-offset_bottom = 374.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_hwiel")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iojcs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iqu2x")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ajor3")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_c14tr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_vqfnc")
-
-[node name="ButtonUp" type="Button" parent="."]
-offset_left = 1242.0
-offset_top = 356.0
-offset_right = 1292.0
-offset_bottom = 406.0
-rotation = -1.5707964
-theme_override_styles/normal = SubResource("StyleBoxFlat_8jewq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3xwg0")
-theme_override_styles/hover = SubResource("StyleBoxFlat_85l3h")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_j31fo")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_o6fs4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_twhnx")
-icon = ExtResource("9_wt6go")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonLeft" type="Button" parent="."]
-offset_left = 1238.0
-offset_top = 411.0
-offset_right = 1288.0
-offset_bottom = 461.0
-rotation = -3.1415927
-theme_override_styles/normal = SubResource("StyleBoxFlat_sps8e")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_bnlop")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_oaeeq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ey15c")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_p1837")
-theme_override_styles/focus = SubResource("StyleBoxFlat_qv2vy")
-icon = ExtResource("9_wt6go")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ButtonRight" type="Button" parent="."]
-offset_left = 1298.0
-offset_top = 361.0
-offset_right = 1348.0
-offset_bottom = 411.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_1am0g")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2wy2p")
-theme_override_styles/hover = SubResource("StyleBoxFlat_w6pri")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_nha2g")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_4bn0x")
-theme_override_styles/focus = SubResource("StyleBoxFlat_m7n71")
-icon = ExtResource("9_wt6go")
-
-[node name="ButtonDown" type="Button" parent="."]
-offset_left = 1293.0
-offset_top = 411.0
-offset_right = 1343.0
-offset_bottom = 461.0
-rotation = -4.712389
-theme_override_styles/normal = SubResource("StyleBoxFlat_prngn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_hq5fo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_rl2iq")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_644nv")
-theme_override_styles/focus = SubResource("StyleBoxFlat_knmac")
-icon = ExtResource("9_wt6go")
-expand_icon = true
+offset_left = 585.0
+offset_top = -6.0
+offset_right = 813.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 42
+text = "Бот топает"
+metadata/_edit_lock_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 visible = false
@@ -1008,18 +363,18 @@ offset_left = 258.0
 offset_top = 89.0
 offset_right = 1009.0
 offset_bottom = 842.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_aeaoo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dyurn")
 
 [node name="BoxContainer" type="BoxContainer" parent="PanelContainer"]
 self_modulate = Color(0, 0, 0, 1)
 clip_children = 1
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = SubResource("Theme_r657h")
+theme = SubResource("Theme_6lh7w")
 vertical = true
 
 [node name="Control" type="Control" parent="PanelContainer/BoxContainer"]
-material = SubResource("CanvasItemMaterial_jfkdj")
+material = SubResource("CanvasItemMaterial_1hbs0")
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -1027,13 +382,13 @@ size_flags_stretch_ratio = 0.0
 [node name="70x70" type="Sprite2D" parent="PanelContainer/BoxContainer/Control"]
 position = Vector2(374, 100)
 scale = Vector2(4.3285713, 1.9714291)
-texture = ExtResource("8_l6pdb")
+texture = ExtResource("8_0i6v8")
 
 [node name="Control3" type="Control" parent="PanelContainer/BoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 8
-theme = SubResource("Theme_f0urt")
+theme = SubResource("Theme_7x8fr")
 
 [node name="head" type="Label" parent="PanelContainer/BoxContainer/Control3"]
 visible = false
@@ -1045,7 +400,7 @@ offset_top = 4.0
 offset_bottom = 2.0
 theme_override_fonts/font = ExtResource("10_jfkdj")
 text = "INHERIT"
-label_settings = SubResource("LabelSettings_f0urt")
+label_settings = SubResource("LabelSettings_2y2sp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1072,16 +427,16 @@ anchors_preset = -1
 anchor_right = 1.0
 offset_top = 160.0
 offset_bottom = 260.0
-theme = SubResource("Theme_jfkdj")
+theme = SubResource("Theme_rsdyk")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_fonts/font = ExtResource("11_wt6go")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_wt6go")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bcos8")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gykuw")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_jfkdj")
-theme_override_styles/focus = SubResource("StyleBoxFlat_feppd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ken75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qqttp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8l64r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_fiatl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1hgl6")
 autowrap_mode = 1
 
 [node name="Button2" type="Button" parent="PanelContainer/BoxContainer/Control2"]
@@ -1093,11 +448,11 @@ offset_bottom = 370.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_wt6go")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_436f3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_d05gg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cmsyx")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8jbxr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_edwr0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v23c4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6m5xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bjwxm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_o1hl6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u2hrd")
 autowrap_mode = 1
 
 [node name="Button3" type="Button" parent="PanelContainer/BoxContainer/Control2"]
@@ -1109,11 +464,11 @@ offset_bottom = 480.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("11_wt6go")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_436f3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_d05gg")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cmsyx")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8jbxr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_edwr0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v23c4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6m5xv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bjwxm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_o1hl6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u2hrd")
 autowrap_mode = 1
 
 [node name="rezult" type="PanelContainer" parent="."]
@@ -1122,18 +477,18 @@ offset_left = 258.0
 offset_top = 89.0
 offset_right = 1009.0
 offset_bottom = 842.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_aeaoo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dyurn")
 
 [node name="BoxContainer" type="BoxContainer" parent="rezult"]
 self_modulate = Color(0, 0, 0, 1)
 clip_children = 1
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = SubResource("Theme_r657h")
+theme = SubResource("Theme_6lh7w")
 vertical = true
 
 [node name="Control" type="Control" parent="rezult/BoxContainer"]
-material = SubResource("CanvasItemMaterial_jfkdj")
+material = SubResource("CanvasItemMaterial_1hbs0")
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -1141,13 +496,13 @@ size_flags_stretch_ratio = 0.0
 [node name="70x70" type="Sprite2D" parent="rezult/BoxContainer/Control"]
 position = Vector2(374, 100)
 scale = Vector2(4.3285713, 1.9714291)
-texture = ExtResource("8_l6pdb")
+texture = ExtResource("8_0i6v8")
 
 [node name="Control3" type="Control" parent="rezult/BoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 8
-theme = SubResource("Theme_f0urt")
+theme = SubResource("Theme_7x8fr")
 
 [node name="bodyText" type="RichTextLabel" parent="rezult/BoxContainer/Control3"]
 layout_mode = 1
@@ -1172,16 +527,16 @@ anchors_preset = -1
 anchor_right = 1.0
 offset_top = 160.0
 offset_bottom = 260.0
-theme = SubResource("Theme_jfkdj")
+theme = SubResource("Theme_rsdyk")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_fonts/font = ExtResource("11_wt6go")
 theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_wt6go")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bcos8")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gykuw")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_jfkdj")
-theme_override_styles/focus = SubResource("StyleBoxFlat_feppd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ken75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qqttp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8l64r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_fiatl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1hgl6")
 autowrap_mode = 1
 
 [node name="obuch" type="PanelContainer" parent="."]
@@ -1190,21 +545,21 @@ offset_left = 258.0
 offset_top = 89.0
 offset_right = 1009.0
 offset_bottom = 842.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_aeaoo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dyurn")
 
 [node name="BoxContainer" type="BoxContainer" parent="obuch"]
 self_modulate = Color(0, 0, 0, 1)
 clip_children = 1
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme = SubResource("Theme_r657h")
+theme = SubResource("Theme_6lh7w")
 vertical = true
 
 [node name="Control3" type="Control" parent="obuch/BoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 8
-theme = SubResource("Theme_f0urt")
+theme = SubResource("Theme_7x8fr")
 
 [node name="head2" type="Label" parent="obuch/BoxContainer/Control3"]
 layout_mode = 1
@@ -1216,7 +571,7 @@ offset_bottom = -18.000004
 theme_override_fonts/font = ExtResource("10_jfkdj")
 theme_override_font_sizes/font_size = 25
 text = "INHERIT"
-label_settings = SubResource("LabelSettings_f0urt")
+label_settings = SubResource("LabelSettings_2y2sp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1233,7 +588,7 @@ theme_override_constants/line_separation = 3
 theme_override_fonts/mono_font = ExtResource("10_jfkdj")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxFlat_ql1ih")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p2v4k")
 text = "inheritinheritinheritinheritinherit
 inheritinheritinheritinheritinherit
 inheritinheritinheritinheritinherit"
@@ -1251,16 +606,16 @@ offset_left = -0.13900757
 offset_top = 597.0
 offset_right = -14.024048
 offset_bottom = 683.0
-theme = SubResource("Theme_jfkdj")
+theme = SubResource("Theme_rsdyk")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
 theme_override_fonts/font = ExtResource("11_wt6go")
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_wt6go")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bcos8")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gykuw")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_jfkdj")
-theme_override_styles/focus = SubResource("StyleBoxFlat_feppd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ken75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qqttp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8l64r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_fiatl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1hgl6")
 text = "Далее "
 autowrap_mode = 1
 icon_alignment = 1
@@ -1272,23 +627,14 @@ texture = ExtResource("9_wt6go")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="obuch/BoxContainer"]
 position = Vector2(162, 592)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_bnlop")
+sprite_frames = SubResource("SpriteFrames_tp5mi")
 animation = &"new_animation"
 autoplay = "new_animation"
 
-[node name="Playerr" parent="." instance=ExtResource("12_436f3")]
-position = Vector2(681, 210)
-
-[connection signal="pressed" from="ButtonUpRight" to="." method="_on_button_up_right_pressed"]
-[connection signal="pressed" from="ButtonRightUp" to="." method="_on_button_right_up_pressed"]
-[connection signal="pressed" from="ButtonDownLeft" to="." method="_on_button_down_left_pressed"]
-[connection signal="pressed" from="ButtonLeftDown" to="." method="_on_button_left_down_pressed"]
-[connection signal="pressed" from="ButtonUp" to="." method="_on_button_up_pressed"]
-[connection signal="pressed" from="ButtonLeft" to="." method="_on_button_left_pressed"]
-[connection signal="pressed" from="ButtonRight" to="." method="_on_button_right_pressed"]
-[connection signal="pressed" from="ButtonDown" to="." method="_on_button_down_pressed"]
+[connection signal="pressed" from="Button2" to="." method="reset_game"]
+[connection signal="pressed" from="Button" to="." method="reset_game"]
 [connection signal="pressed" from="PanelContainer/BoxContainer/Control2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/BoxContainer/Control2/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="PanelContainer/BoxContainer/Control2/Button3" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/BoxContainer/Control2/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="rezult/BoxContainer/Control2/Button_rez" to="." method="_on_button_rez_pressed"]
 [connection signal="pressed" from="obuch/BoxContainer/Control2/Button_obuch" to="." method="_on_button_obuch_pressed"]

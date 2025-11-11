@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv0wm47scu5c"
-path="res://.godot/imported/gem64.png-59d5a1dc9e86acab75cf52bd9aa94212.ctex"
+uid="uid://shfj5sjl865f"
+path="res://.godot/imported/Rose-crystal.png-94ba704ffd520652137ed66ac1c1d733.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gem64.png"
-dest_files=["res://.godot/imported/gem64.png-59d5a1dc9e86acab75cf52bd9aa94212.ctex"]
+source_file="res://textures/Rose-crystal.png"
+dest_files=["res://.godot/imported/Rose-crystal.png-94ba704ffd520652137ed66ac1c1d733.ctex"]
 
 [params]
 

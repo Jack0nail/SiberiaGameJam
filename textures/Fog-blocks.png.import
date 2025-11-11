@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvua2co4aift8"
-path="res://.godot/imported/70x70.png-064f56ac3f2709b7266a34dd7c67f7fa.ctex"
+uid="uid://c1mq6xh487bse"
+path="res://.godot/imported/Fog-blocks.png-97a648ad8ddfc9f00cfc5cb238b29809.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/70x70.png"
-dest_files=["res://.godot/imported/70x70.png-064f56ac3f2709b7266a34dd7c67f7fa.ctex"]
+source_file="res://textures/Fog-blocks.png"
+dest_files=["res://.godot/imported/Fog-blocks.png-97a648ad8ddfc9f00cfc5cb238b29809.ctex"]
 
 [params]
 
