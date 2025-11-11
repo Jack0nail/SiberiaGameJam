@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bceiodg4jfch7"
-path="res://.godot/imported/Boykisser2.png-efcfd44d35191e0a8c89e89ba3c3ebbc.ctex"
+uid="uid://bv0wm47scu5c"
+path="res://.godot/imported/gem64.png-59d5a1dc9e86acab75cf52bd9aa94212.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Boykisser2.png"
-dest_files=["res://.godot/imported/Boykisser2.png-efcfd44d35191e0a8c89e89ba3c3ebbc.ctex"]
+source_file="res://gem64.png"
+dest_files=["res://.godot/imported/gem64.png-59d5a1dc9e86acab75cf52bd9aa94212.ctex"]
 
 [params]
 

@@ -10,14 +10,28 @@ config_version=5
 
 [application]
 
-config/name="Prozrenie"
-run/main_scene="uid://bew0kwvdpmn0l"
+config/name="ProjectDodep"
+run/main_scene="uid://psr4128r3u7w"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [display]
 
 window/size/viewport_width=1400
 window/size/viewport_height=900
+window/size/resizable=true
+
+window/size/min_width=1400
+window/size/min_height=900
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[input]
+
+move_on_click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [input]
 
@@ -29,5 +43,6 @@ move_on_click={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
