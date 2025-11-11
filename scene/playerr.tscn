@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpwvsxa7v8htg"]
+
+[ext_resource type="Script" uid="uid://c1yf13es2mq1d" path="res://scripts/playerr.gd" id="1_efs0n"]
+[ext_resource type="Texture2D" uid="uid://dvm05812dtkga" path="res://textures/Boykisser1.png" id="13_rgmvk"]
+[ext_resource type="Texture2D" uid="uid://bceiodg4jfch7" path="res://textures/Boykisser2.png" id="14_857b3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x85lq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_rgmvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_857b3")
+}],
+"loop": true,
+"name": &"base",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqdeb"]
+size = Vector2(23, 17)
+
+[node name="Playerr" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_efs0n")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x85lq")
+animation = &"base"
+autoplay = "base"
+frame_progress = 0.97342634
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_vqdeb")

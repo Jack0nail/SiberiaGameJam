@@ -1,0 +1,9 @@
+extends Node2D
+
+
+func _on_play_pressed() -> void:
+	get_tree().change_scene_to_file("res://scene/node1.tscn")
+
+
+func _on_button_sh_pressed() -> void:
+	pass # Replace with function body.
