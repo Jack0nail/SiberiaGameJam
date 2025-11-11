@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bqlvdwdmdktx5" path="res://mainnode.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://bl832i7sxsh6y" path="res://IMG_5659.PNG" id="2_l6pdb"]
 [ext_resource type="Texture2D" uid="uid://bwf6kywo3j881" path="res://all128.png" id="3_qn3nj"]
-[ext_resource type="Texture2D" uid="uid://cpcj5b0nxh4py" path="res://Fog-blocks128.png" id="4_l6pdb"]
+[ext_resource type="Texture2D" uid="uid://b1uxnnfudq2bd" path="res://gem64.png" id="4_qn3nj"]
 [ext_resource type="PackedScene" uid="uid://bic8e0vl0kbu6" path="res://enemy.tscn" id="8_l6pdb"]
 [ext_resource type="PackedScene" uid="uid://ctev23als233s" path="res://hp.tscn" id="9_r657h"]
 [ext_resource type="PackedScene" uid="uid://dasftqpbgksix" path="res://playerr.tscn" id="12_436f3"]
@@ -12,29 +12,24 @@
 texture = ExtResource("3_qn3nj")
 texture_region_size = Vector2i(128, 128)
 1:9/0 = 0
-1:9/0/texture_origin = Vector2i(0, -21)
+1:9/0/texture_origin = Vector2i(0, -15)
 4:9/0 = 0
 4:9/0/texture_origin = Vector2i(0, -15)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qn3nj"]
-texture = ExtResource("4_l6pdb")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -15)
-1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, -15)
-2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, -15)
-3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, -15)
+0:9/0 = 0
+0:9/0/texture_origin = Vector2i(0, -15)
+2:9/0 = 0
+2:9/0/texture_origin = Vector2i(0, -15)
+3:9/0 = 0
+3:9/0/texture_origin = Vector2i(0, -15)
+5:9/0 = 0
+5:9/0/texture_origin = Vector2i(0, -21)
 
 [sub_resource type="TileSet" id="TileSet_l6pdb"]
 tile_shape = 1
 tile_layout = 5
-tile_size = Vector2i(124, 100)
+tile_size = Vector2i(128, 96)
 occlusion_layer_0/light_mask = 1
 sources/0 = SubResource("TileSetAtlasSource_l6pdb")
-sources/1 = SubResource("TileSetAtlasSource_qn3nj")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cmsyx"]
 texture = ExtResource("3_qn3nj")
@@ -55,11 +50,20 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:10/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r657h"]
+texture = ExtResource("4_qn3nj")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_speed = 1.5
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_feppd"]
 tile_shape = 1
 tile_layout = 5
-tile_size = Vector2i(124, 100)
+tile_size = Vector2i(128, 96)
 sources/0 = SubResource("TileSetAtlasSource_cmsyx")
+sources/1 = SubResource("TileSetAtlasSource_r657h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_436f3"]
 texture = ExtResource("3_qn3nj")
@@ -95,7 +99,7 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_bcos8"]
 tile_shape = 1
 tile_layout = 5
-tile_size = Vector2i(124, 100)
+tile_size = Vector2i(128, 96)
 sources/0 = SubResource("TileSetAtlasSource_436f3")
 
 [node name="MainNode" type="Node"]
@@ -112,14 +116,14 @@ metadata/_edit_lock_ = true
 [node name="TerrainMap" type="TileMapLayer" parent="."]
 position = Vector2(650, 50)
 scale = Vector2(0.8, 0.8)
-tile_map_data = PackedByteArray("AAAJAAkAAAAEAAkAAAAIAAkAAAABAAkAAAAHAAkAAAABAAkAAAAGAAkAAAABAAkAAAAFAAkAAAAEAAkAAAAEAAkAAAAEAAkAAAADAAkAAAABAAkAAAACAAkAAAABAAkAAAABAAkAAAABAAkAAAAAAAgAAAABAAkAAAAAAAcAAAABAAkAAAAAAAkAAAAEAAkAAAAAAAYAAAABAAkAAAAAAAUAAAAEAAkAAAABAAQAAAABAAkAAAABAAAAAAABAAkAAAAAAAEAAAABAAkAAAAAAAIAAAABAAkAAAAAAAAAAAAEAAkAAAAAAAMAAAABAAkAAAAAAAQAAAAEAAkAAAACAAAAAAABAAkAAAAEAAAAAAAEAAkAAAAEAAEAAAABAAkAAAAEAAIAAAABAAkAAAAEAAMAAAABAAkAAAACAAQAAAABAAkAAAAFAAQAAAAEAAkAAAAEAAQAAAAEAAkAAAADAAQAAAABAAkAAAADAAAAAAABAAkAAAAFAAAAAAAEAAkAAAAGAAAAAAABAAkAAAAHAAAAAAABAAkAAAAIAAAAAAABAAkAAAAJAAAAAAAEAAkAAAAJAAEAAAABAAkAAAAJAAIAAAABAAkAAAAJAAYAAAABAAkAAAAJAAcAAAABAAkAAAAHAAUAAAABAAkAAAAJAAMAAAABAAkAAAAJAAQAAAAEAAkAAAAJAAUAAAAEAAkAAAAJAAgAAAABAAkAAAAFAAcAAAABAAkAAAAFAAYAAAABAAkAAAAFAAUAAAAEAAkAAAAFAAgAAAABAAkAAAAEAAUAAAAEAAkAAAAIAAUAAAABAAkAAAAGAAUAAAABAAkAAAAEAP//AQAAAAAAAAAFAP//AAAEAAkAAAAFAP7/AAAEAAkAAAAEAP7/AQAAAAAAAAADAP//AAAEAAkAAAADAP7/AAAEAAkAAAAEAP3/AAAEAAkAAAAFAP3/AAAEAAkAAAADAP3/AAAEAAkAAAABAAEAAAABAAkAAAACAAEAAAABAAkAAAADAAEAAAABAAkAAAADAAIAAAABAAkAAAACAAIAAAABAAkAAAABAAIAAAABAAkAAAABAAMAAAABAAkAAAACAAMAAAABAAkAAAADAAMAAAABAAkAAAAGAP//AQADAAAAAAAGAP7/AQADAAAAAAAGAP3/AQADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAkAAAAEAAkAAAAIAAkAAAABAAkAAAAHAAkAAAABAAkAAAAGAAkAAAABAAkAAAAFAAkAAAAEAAkAAAAEAAkAAAAEAAkAAAADAAkAAAABAAkAAAACAAkAAAABAAkAAAABAAkAAAABAAkAAAAAAAgAAAABAAkAAAAAAAcAAAABAAkAAAAAAAkAAAAEAAkAAAAAAAYAAAABAAkAAAAAAAUAAAAEAAkAAAABAAQAAAABAAkAAAABAAAAAAABAAkAAAAAAAEAAAABAAkAAAAAAAIAAAABAAkAAAAAAAAAAAAEAAkAAAAAAAMAAAABAAkAAAAAAAQAAAAEAAkAAAACAAAAAAABAAkAAAAEAAAAAAAEAAkAAAAEAAEAAAABAAkAAAAEAAIAAAABAAkAAAAEAAMAAAABAAkAAAACAAQAAAABAAkAAAAFAAQAAAAEAAkAAAAEAAQAAAAEAAkAAAADAAQAAAABAAkAAAADAAAAAAABAAkAAAAFAAAAAAAEAAkAAAAGAAAAAAABAAkAAAAHAAAAAAABAAkAAAAIAAAAAAABAAkAAAAJAAAAAAAEAAkAAAAJAAEAAAABAAkAAAAJAAIAAAABAAkAAAAJAAYAAAABAAkAAAAJAAcAAAABAAkAAAAHAAUAAAABAAkAAAAJAAMAAAABAAkAAAAJAAQAAAAEAAkAAAAJAAUAAAAEAAkAAAAJAAgAAAABAAkAAAAFAAcAAAABAAkAAAAFAAYAAAABAAkAAAAFAAUAAAAEAAkAAAAFAAgAAAABAAkAAAAEAAUAAAAEAAkAAAAIAAUAAAABAAkAAAAGAAUAAAABAAkAAAAEAP//AAAFAAkAAAAFAP//AAAEAAkAAAAFAP7/AAAEAAkAAAAEAP7/AAAFAAkAAAADAP//AAAEAAkAAAADAP7/AAAEAAkAAAAEAP3/AAAEAAkAAAAFAP3/AAAEAAkAAAADAP3/AAAEAAkAAAABAAEAAAABAAkAAAACAAEAAAABAAkAAAADAAEAAAABAAkAAAADAAIAAAABAAkAAAACAAIAAAABAAkAAAABAAIAAAABAAkAAAABAAMAAAABAAkAAAACAAMAAAABAAkAAAADAAMAAAABAAkAAAAGAP//AAAFAAkAAAAGAP7/AAAFAAkAAAAGAP3/AAAFAAkAAAA=")
 tile_set = SubResource("TileSet_l6pdb")
 metadata/_edit_lock_ = true
 
 [node name="ObjectMap" type="TileMapLayer" parent="."]
 position = Vector2(650, 35)
 scale = Vector2(0.8, 0.8)
-tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAABAAQAAAAAAAoAAAA=")
+tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAABAAQAAAAAAAoAAAACAAMAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_feppd")
 metadata/_edit_lock_ = true
 

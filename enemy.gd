@@ -35,8 +35,9 @@ func change_hp(num: int) -> void:
 func dead_unit() -> void:
 	pos = Vector2i(-1,-1)
 	is_alive = false
+	print("bot_enemy_dead")
+	await get_tree().create_timer(0.9).timeout
 	hide()
-	print("bot_dead")
 
 func _physics_process(delta: float) -> void:
 	if is_alive:

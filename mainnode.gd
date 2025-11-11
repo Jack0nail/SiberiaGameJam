@@ -12,7 +12,10 @@ var port: Vector2i
 var map_size:= Vector2i.ZERO
 var cell_type_map: Dictionary[Vector2i,String]
 var is_move: bool = true
-
+const sand = Vector2i(4,9)
+const water = Vector2i(5,9)
+var json: Dictionary
+ 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -29,16 +32,16 @@ func _ready() -> void:
 func _on_request_completed(result, response_code, headers, body):
 	
 	##json read
-	var json = JSON.parse_string(body.get_string_from_utf8())
+	json = JSON.parse_string(body.get_string_from_utf8())
 	
 	## for gen_map
 	#reset_game(json["map"])
 	
 	## for get_map/2
-	reset_game(json)
+	reset_game()
 	
 	
-func reset_game(json: Dictionary) -> void:
+func reset_game() -> void:
 	## global size map
 	map_size.x = json["size"]["width"]
 	map_size.y = json["size"]["height"]
@@ -84,9 +87,9 @@ func reset_game(json: Dictionary) -> void:
 		## draw start cell
 		if i["x"] == 0 && i["y"] == 0:
 			if i["cell_type"] == "S":
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(4,9))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, sand)
 			else:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(1,9))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, water)
 				
 				
 		if (i["cell_items"].size() != 0):
@@ -109,13 +112,13 @@ func reset_game(json: Dictionary) -> void:
 		## Отрисовка тумана
 		if (player_on_map.pos != Vector2i(i["x"], i["y"])):
 			if (i["x"] == map_size.x-1 && i["y"] == map_size.y-1):
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 1, Vector2i(3, 0))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 9))
 			elif i["x"] == map_size.x-1:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 1, Vector2i(2, 0))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(2, 9))
 			elif i["y"] == map_size.y-1:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 1, Vector2i(1, 0))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(1, 9))
 			else:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 1, Vector2i(0, 0))
+				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(0, 9))
 				
 	## draw border
 	reset_border()
@@ -168,20 +171,22 @@ func move_bots() -> void:
 			if targets.size() != 0:
 				if randi()%2 == 0:
 					bot_attack(targets[randi()%targets.size()],i)
+					#print("bot"+str(i)+" select attack")
 				else:
 					bot_list[i].pos = get_randi_move(bot_list[i].pos)
 					var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[i].pos))
 					global_pos.y -= 15
 					bot_list[i].move(global_pos)
+					print("bot"+str(i)+" select move")
 			else:
 				bot_list[i].pos = get_randi_move(bot_list[i].pos)
 				var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[i].pos))
 				global_pos.y -= 15
 				bot_list[i].move(global_pos)
+				print("bot"+str(i)+" select move")
 	bot_visible()
 	set_is_move(true)
 	reset_border()
-	print("hui bot")
 	
 func get_randi_move(unit_pos: Vector2i) -> Vector2i:
 	var new_pos:= Vector2i.ZERO
@@ -251,7 +256,7 @@ func bot_attack(target: int, attacker_id: int) -> void:
 		bot_list[target].change_hp(player_on_map.dmg*-1)
 	else:
 		bot_list[target].change_hp(bot_list[attacker_id].dmg*-1)
-	print("bot "+ str(attacker_id)+ " attack "+str(target))
+	print("unit "+ str(attacker_id)+ " attack "+str(target))
 	await get_tree().create_timer(1.0).timeout
 	
 	
@@ -292,15 +297,15 @@ func _process(delta: float) -> void:
 						## draw open cell
 						terrain_map_layer.erase_cell(cell_cord)
 						if cell_type_map.get(cell_cord) == "S":
-							terrain_map_layer.set_cell(cell_cord, 0, Vector2i(4,9))
+							terrain_map_layer.set_cell(cell_cord, 0, sand)
 						else:
-							terrain_map_layer.set_cell(cell_cord, 0, Vector2i(1,9))
+							terrain_map_layer.set_cell(cell_cord, 0, water)
 						reset_border()
 						
 						## move player
 						var cell_pos_global = terrain_map_layer.to_global(terrain_map_layer.map_to_local(cell_cord))
 						#print(cell_pos_global)
-						print("hui")
+						print("player move")
 						cell_pos_global.y -= 15
 						player_on_map.move(Vector2(float(cell_pos_global.x), float(cell_pos_global.y)))
 						
@@ -309,7 +314,7 @@ func _process(delta: float) -> void:
 						## check artifact
 						var mod_art = cell_cord - art
 						if (abs(mod_art.x)+abs(mod_art.y)==1 && player_on_map.is_art == false):
-							object_map_layer.set_cell(Vector2i(art), 0, Vector2i(0, 10))
+							object_map_layer.set_cell(Vector2i(art), 1, Vector2i.ZERO)
 						if (cell_cord == art && player_on_map.is_art == false):
 							player_on_map.is_art = true
 							print("art")
@@ -332,4 +337,7 @@ func _process(delta: float) -> void:
 						move_bots()
 				else:
 					set_is_move(false)
-					player_attack(get_attack_bot_index(cell_cord))
+					bot_attack(get_attack_bot_index(cell_cord), -1)
+					await get_tree().create_timer(1.0).timeout
+					reset_border()
+					move_bots()
