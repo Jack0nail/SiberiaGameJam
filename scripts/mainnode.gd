@@ -518,3 +518,12 @@ func _on_button_obuch_pressed() -> void:
 			$obuch.hide()
 		"Хей, я смотрю ты сделал это! Так вот как выглядит этот.. ну.. как его.. икосэдр. Теперь нам нужно вернуться домой и рассказать всем о нашем приключении! Мы - герои спасшие.. священный камень!":
 			get_tree().change_scene_to_file("res://scene/menu.tscn")
+
+
+func _on_sound_button_pressed() -> void:
+	if $AudioStreamPlayer.playing == true:
+		$AudioStreamPlayer.playing = false
+		$sound_button.set("icon","res://textures/Group 209.png")
+	else: 
+		$AudioStreamPlayer.playing = true
+		$sound_button.set("icon","res://textures/Group 203.png")
