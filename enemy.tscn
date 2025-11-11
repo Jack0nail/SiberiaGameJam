@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bic8e0vl0kbu6"]
+[gd_scene load_steps=22 format=3 uid="uid://bic8e0vl0kbu6"]
 
 [ext_resource type="Script" uid="uid://bvrljfi3x6ir4" path="res://enemy.gd" id="1_5hcft"]
 [ext_resource type="Texture2D" uid="uid://bwf6kywo3j881" path="res://all128.png" id="2_4gyqm"]
@@ -34,6 +34,10 @@ region = Rect2(768, 896, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxifv"]
 atlas = ExtResource("2_4gyqm")
 region = Rect2(0, 1024, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
+atlas = ExtResource("2_4gyqm")
+region = Rect2(128, 768, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwjut"]
 atlas = ExtResource("2_4gyqm")
@@ -79,24 +83,30 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_epg4t")
 }, {
-"duration": 1.0,
+"duration": 1.25,
 "texture": SubResource("AtlasTexture_3yqyl")
 }, {
-"duration": 1.0,
+"duration": 1.25,
 "texture": SubResource("AtlasTexture_wujgv")
 }, {
-"duration": 1.0,
+"duration": 1.25,
 "texture": SubResource("AtlasTexture_hb8ge")
 }, {
-"duration": 1.0,
+"duration": 1.25,
 "texture": SubResource("AtlasTexture_e1ltt")
 }],
 "loop": false,
 "name": &"attack",
-"speed": 4.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_dxifv")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_4gyqm")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_dxifv")
 }, {
 "duration": 1.0,
@@ -116,10 +126,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nnovl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxifv")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,4 +160,7 @@ animation = &"damage"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_vqdeb")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="set_idle_anim"]

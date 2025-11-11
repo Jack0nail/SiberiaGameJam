@@ -55,6 +55,13 @@ func reset_game(json: Dictionary) -> void:
 	global_pos2.y -= 15
 	player_on_map.global_position = global_pos2
 	player_on_map.move(global_pos2)
+	is_move = true
+	refresh_hp()
+	$Button2.hide()
+	$Button.hide()
+	
+	for i in bot_list:
+		i.refresh()
 	
 	## set start bot pos
 	bot_list[0].pos = Vector2i(0, map_size.y-1)
@@ -111,41 +118,42 @@ func reset_game(json: Dictionary) -> void:
 				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 1, Vector2i(0, 0))
 				
 	## draw border
-	reset_border(player_on_map.pos)
+	reset_border()
 	refresh_hp()
-
-func reset_border(coodr: Vector2i) -> void:
-	border_map_layer.clear()
-	border_map_layer.set_cell(coodr, 0, Vector2i(1,13))
-	if player_on_map.pos.x + 1 < map_size.x:
-		var pos = coodr
-		pos.x += 1
-		border_map_layer.set_cell(pos, 0, Vector2i(1,16))
-	if player_on_map.pos.x - 1 > -1:
-		var pos = coodr
-		pos.x -= 1
-		border_map_layer.set_cell(pos, 0, Vector2i(1,16))
-	if player_on_map.pos.y + 1 < map_size.y:
-		var pos = coodr
-		pos.y += 1
-		border_map_layer.set_cell(pos, 0, Vector2i(1,16))
-	if player_on_map.pos.y - 1 > -1:
-		var pos = coodr
-		pos.y -= 1
-		border_map_layer.set_cell(pos, 0, Vector2i(1,16))
+	
+func set_is_move(l: bool) -> void:
+	is_move = l
+	if l:
+		$Label.hide()
+	else:
+		$Label.show()
 		
-func _hp_down() -> void:
-	hp.change_hp(-2)
-	
-func _hp_down_1() -> void:
-	hp.change_hp(-1)
-	
-func _hp_up() -> void:
-	hp.change_hp(2)
-	
-func _hp_up_1() -> void:
-	hp.change_hp(1)
-	
+
+func reset_border() -> void:
+	border_map_layer.clear()
+	border_map_layer.set_cell(player_on_map.pos, 0, Vector2i(1, 13))
+	if is_move:
+		if player_on_map.pos.x + 1 < map_size.x:
+			var pos = player_on_map.pos
+			pos.x += 1
+			border_map_layer.set_cell(pos, 0, Vector2i(1, 16))
+		if player_on_map.pos.x - 1 > -1:
+			var pos = player_on_map.pos
+			pos.x -= 1
+			border_map_layer.set_cell(pos, 0, Vector2i(1, 16))
+		if player_on_map.pos.y + 1 < map_size.y:
+			var pos = player_on_map.pos
+			pos.y += 1
+			border_map_layer.set_cell(pos, 0, Vector2i(1, 16))
+		if player_on_map.pos.y - 1 > -1:
+			var pos = player_on_map.pos
+			pos.y -= 1
+			border_map_layer.set_cell(pos, 0, Vector2i(1, 16))
+		for i in bot_list:
+			if i.is_alive:
+				if abs(i.pos.x - player_on_map.pos.x) + abs(i.pos.y - player_on_map.pos.y) == 1:
+					border_map_layer.set_cell(i.pos, 0, Vector2i(1, 14))
+		
 func refresh_hp() -> void:
 	hp.refresh()
 	
@@ -153,9 +161,32 @@ func refresh_hp() -> void:
 func add_hp(num: int) -> void:
 	hp.change_hp(num)
 	
+func move_bots() -> void:
+	for i in bot_list.size():
+		if bot_list[i].is_alive:
+			var targets = scan_around(i)
+			if targets.size() != 0:
+				if randi()%2 == 0:
+					bot_attack(targets[randi()%targets.size()],i)
+				else:
+					bot_list[i].pos = get_randi_move(bot_list[i].pos)
+					var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[i].pos))
+					global_pos.y -= 15
+					bot_list[i].move(global_pos)
+			else:
+				bot_list[i].pos = get_randi_move(bot_list[i].pos)
+				var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[i].pos))
+				global_pos.y -= 15
+				bot_list[i].move(global_pos)
+	bot_visible()
+	set_is_move(true)
+	reset_border()
+	print("hui bot")
+	
 func get_randi_move(unit_pos: Vector2i) -> Vector2i:
 	var new_pos:= Vector2i.ZERO
-	while true:
+	var count = 0
+	while count < 100:
 		var mob = Vector2i(randi()%3-1, randi()%3-1)
 		if (abs(mob.x)+abs(mob.y)==1):
 			new_pos = unit_pos + mob
@@ -167,8 +198,9 @@ func get_randi_move(unit_pos: Vector2i) -> Vector2i:
 				if pos_check_contact(new_pos, player_on_map.pos):
 					n += 1
 				if n == 5:
-					break
-	return new_pos
+					return new_pos
+		count += 1
+	return unit_pos
 	
 
 func pos_check_contact(unit1: Vector2i, unit2: Vector2i) -> bool:
@@ -177,68 +209,127 @@ func pos_check_contact(unit1: Vector2i, unit2: Vector2i) -> bool:
 	else:
 		return true
 
+## show\hide bot
 func bot_visible() -> void:
 	for i in bot_list:
-		if (abs(i.pos.x - player_on_map.pos.x) + abs(i.pos.y - player_on_map.pos.y) == 1):
-			i.show()
-		else: 
-			i.hide()
+		if i.is_alive:
+			if (abs(i.pos.x - player_on_map.pos.x) + abs(i.pos.y - player_on_map.pos.y) == 1):
+				await get_tree().create_timer(0.3).timeout
+				i.show()
+			else: 
+				if i.is_visible():
+					await get_tree().create_timer(0.3).timeout
+				i.hide()
+			
+			
+func check_attack_player(target: Vector2i) -> bool:
+	for i in bot_list:
+		if i.is_alive:
+			if i.pos == target:
+				return false
+	return true
+	
+func get_attack_bot_index(target: Vector2i) -> int:
+	for i in bot_list.size():
+		if bot_list[i].is_alive:
+			if bot_list[i].pos == target:
+				return i
+	return -1
+	
+func bot_attack(target: int, attacker_id: int) -> void:
+	if target == -1:
+		player_on_map.set_damage_anim()
+	else:
+		bot_list[target].set_damage_anim()
+	if attacker_id == -1:
+		player_on_map.set_attack_anim()
+	else:
+		bot_list[attacker_id].set_attack_anim()
+	if target == -1:
+		add_hp(bot_list[attacker_id].dmg*-1)
+	elif attacker_id == -1:
+		bot_list[target].change_hp(player_on_map.dmg*-1)
+	else:
+		bot_list[target].change_hp(bot_list[attacker_id].dmg*-1)
+	print("bot "+ str(attacker_id)+ " attack "+str(target))
+	await get_tree().create_timer(1.0).timeout
+	
+	
+func scan_around(index: int) -> Array[int]:
+	var targets: Array[int]
+	if index != -1:
+		if (abs(bot_list[index].pos.x - player_on_map.pos.x) + abs(bot_list[index].pos.y - player_on_map.pos.y) == 1):
+			targets.append(-1)
+	for i in bot_list.size():
+		if i != index:
+			if (abs(bot_list[index].pos.x - bot_list[i].pos.x) + abs(bot_list[index].pos.y - bot_list[i].pos.y) == 1):
+				targets.append(i)
+	return targets
+	
+func player_attack(id_bot: int) -> void:
+	bot_list[id_bot].set_damage_anim()
+	player_on_map.set_attack_anim()
+	bot_list[id_bot].change_hp(player_on_map.dmg*-1)
+	print(str(id_bot)+": "+ str(bot_list[id_bot].hp))
+	await get_tree().create_timer(1.4).timeout
+	reset_border()
+	move_bots()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_move:
 		if Input.is_action_just_pressed("move_on_click"):
-			var cell_cord =terrain_map_layer.local_to_map(terrain_map_layer.get_local_mouse_position())
+			var cell_cord = terrain_map_layer.local_to_map(terrain_map_layer.get_local_mouse_position())
 			print(cell_cord)
-			var mod = cell_cord-player_on_map.pos
-			#print(player_on_map.pos+mod)
 			
 			## check move player
-			if (abs(mod.x)+abs(mod.y)==1):
-				if (cell_cord.x >-1 && cell_cord.x < map_size.x && cell_cord.y >-1 && cell_cord.y < map_size.y):
-					player_on_map.pos = cell_cord
-					
-					## draw open cell
-					terrain_map_layer.erase_cell(cell_cord)
-					if cell_type_map.get(cell_cord) == "S":
-						terrain_map_layer.set_cell(cell_cord, 0, Vector2i(4,9))
-					else:
-						terrain_map_layer.set_cell(cell_cord, 0, Vector2i(1,9))
-					reset_border(cell_cord)
-					
-					## move player
-					var cell_pos_global = terrain_map_layer.to_global(terrain_map_layer.map_to_local(cell_cord))
-					#print(cell_pos_global)
-					print("hui")
-					cell_pos_global.y -= 15
-					player_on_map.move(Vector2(float(cell_pos_global.x), float(cell_pos_global.y)))
-					
-					bot_visible()
-					
-					## check artifact
-					var mod_art = cell_cord - art
-					if (abs(mod_art.x)+abs(mod_art.y)==1 && player_on_map.is_art == false):
-						object_map_layer.set_cell(Vector2i(art), 0, Vector2i(0, 10))
-					if (cell_cord == art && player_on_map.is_art == false):
-						player_on_map.is_art = true
-						print("art")
-						object_map_layer.erase_cell(art)
+			if (abs(cell_cord.x - player_on_map.pos.x) + abs(cell_cord.y - player_on_map.pos.y) == 1):
+				if check_attack_player(cell_cord):
+					if (cell_cord.x > -1 && cell_cord.x < map_size.x && cell_cord.y > -1 && cell_cord.y < map_size.y):
+						set_is_move(false)
+						player_on_map.pos = cell_cord
 						
-					## check portal
-					var mod_port = cell_cord - port
-					if (abs(mod_port.x)+abs(mod_port.y)==1):
-						object_map_layer.set_cell(Vector2i(port), 0, Vector2i.ZERO)
-					if (cell_cord == port && player_on_map.is_art):
-						print("port")
-						is_move = false
-						border_map_layer.clear()
-						border_map_layer.set_cell(player_on_map.pos, 0, Vector2i(1,13))
-						$Label.show()
+						## draw open cell
+						terrain_map_layer.erase_cell(cell_cord)
+						if cell_type_map.get(cell_cord) == "S":
+							terrain_map_layer.set_cell(cell_cord, 0, Vector2i(4,9))
+						else:
+							terrain_map_layer.set_cell(cell_cord, 0, Vector2i(1,9))
+						reset_border()
 						
-					for i in bot_list:
-						i.pos = get_randi_move(i.pos)
-						var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(i.pos))
-						global_pos.y -= 15
-						i.move(global_pos)
+						## move player
+						var cell_pos_global = terrain_map_layer.to_global(terrain_map_layer.map_to_local(cell_cord))
+						#print(cell_pos_global)
+						print("hui")
+						cell_pos_global.y -= 15
+						player_on_map.move(Vector2(float(cell_pos_global.x), float(cell_pos_global.y)))
+						
 						bot_visible()
+						
+						## check artifact
+						var mod_art = cell_cord - art
+						if (abs(mod_art.x)+abs(mod_art.y)==1 && player_on_map.is_art == false):
+							object_map_layer.set_cell(Vector2i(art), 0, Vector2i(0, 10))
+						if (cell_cord == art && player_on_map.is_art == false):
+							player_on_map.is_art = true
+							print("art")
+							object_map_layer.erase_cell(art)
 							
+						## check portal
+						var mod_port = cell_cord - port
+						if (abs(mod_port.x)+abs(mod_port.y)==1):
+							object_map_layer.set_cell(Vector2i(port), 0, Vector2i.ZERO)
+						if (cell_cord == port && player_on_map.is_art):
+							print("port")
+							is_move = false
+							border_map_layer.clear()
+							border_map_layer.set_cell(player_on_map.pos, 0, Vector2i(1,13))
+							$Button2.show()
+							
+						await get_tree().create_timer(1.0).timeout
+						
+						## move all bot
+						move_bots()
+				else:
+					set_is_move(false)
+					player_attack(get_attack_bot_index(cell_cord))

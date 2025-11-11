@@ -18,7 +18,6 @@ func refresh() -> void:
 	array_hp[2].play("up")
 	array_hp[3].hide()
 	array_hp[4].hide()
-	$"../Label".hide()
 	
 func change_hp(num: int) -> void:
 	cur_num += num
@@ -63,7 +62,7 @@ func reset_hp() -> void:
 				is_not_game_over = false
 				array_hp[num_hp].play("down")
 				num_hp-=1
-				$"../Label".show()
+				$"../Button".show()
 				
 		## not change
 		else:

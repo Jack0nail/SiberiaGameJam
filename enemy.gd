@@ -2,16 +2,45 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 @onready var target = position
+@onready var anim = $AnimatedSprite2D
 var pos:= Vector2i.ZERO
 var hp = 2
+var dmg = 1 
+var is_alive = true
+
+func refresh() -> void:
+	hp = 2
+	dmg = 1
+	is_alive = true
+	pos = Vector2i.ZERO
 
 func move(new_pos: Vector2) -> void:
 	target = new_pos
 
-func _physics_process(delta: float) -> void:
-	#print(position)
-	#print(target)
-	velocity = position.direction_to(target) * SPEED
+func set_attack_anim() -> void:
+	anim.play("attack")
 	
-	if position.distance_to(target) > 2:
-		move_and_slide()
+func set_damage_anim() -> void:
+	anim.play("damage")
+	
+func set_idle_anim() -> void:
+	anim.play("idle")
+
+func change_hp(num: int) -> void:
+	if is_alive:
+		hp += num
+		if hp < 0:
+			dead_unit()
+			
+func dead_unit() -> void:
+	pos = Vector2i(-1,-1)
+	is_alive = false
+	hide()
+	print("bot_dead")
+
+func _physics_process(delta: float) -> void:
+	if is_alive:
+		velocity = position.direction_to(target) * SPEED
+		
+		if position.distance_to(target) > 2:
+			move_and_slide()
