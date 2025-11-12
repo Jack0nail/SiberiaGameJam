@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://r8n0r7scipdi"]
-
-[ext_resource type="Script" uid="uid://b38dxbd62ju2n" path="res://ochered.gd" id="1_of7m5"]
-
-[node name="Node" type="Node"]
-script = ExtResource("1_of7m5")

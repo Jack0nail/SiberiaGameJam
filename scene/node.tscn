@@ -1,11 +1,10 @@
-[gd_scene load_steps=52 format=4 uid="uid://03yjnu1xbf3w"]
+[gd_scene load_steps=51 format=4 uid="uid://03yjnu1xbf3w"]
 
 [ext_resource type="Script" uid="uid://bqlvdwdmdktx5" path="res://scripts/mainnode.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://d3fejlid8pirv" path="res://textures/background.png" id="2_0i6v8"]
-[ext_resource type="AudioStream" uid="uid://lab3gdg5we3c" path="res://да_не_психопомп_я_блять.mp3" id="3_dyurn"]
+[ext_resource type="AudioStream" uid="uid://lab3gdg5we3c" path="res://sound/да_не_психопомп_я_блять.mp3" id="3_dyurn"]
 [ext_resource type="Texture2D" uid="uid://dkk8erwr4bbtp" path="res://textures/all128.png" id="3_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://bv0wm47scu5c" path="res://textures/gem64.png" id="4_qn3nj"]
-[ext_resource type="Texture2D" path="res://textures/70x70.png" id="8_0i6v8"]
 [ext_resource type="PackedScene" uid="uid://dxca46vv61m1n" path="res://scene/enemy.tscn" id="8_l6pdb"]
 [ext_resource type="PackedScene" uid="uid://c2ssrgbfnk2il" path="res://scene/hp.tscn" id="9_r657h"]
 [ext_resource type="Texture2D" uid="uid://cuwktx2wetkxp" path="res://textures/chevron_big_left_white.png" id="9_wt6go"]
@@ -90,6 +89,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
 0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -20)
 
 [sub_resource type="TileSet" id="TileSet_feppd"]
 tile_shape = 1
@@ -325,6 +325,8 @@ animations = [{
 
 [node name="MainNode" type="Node"]
 script = ExtResource("1_112p8")
+player = ExtResource("12_436f3")
+enemy = ExtResource("8_l6pdb")
 
 [node name="Космос(14)" type="Sprite2D" parent="."]
 position = Vector2(700, 450)
@@ -354,53 +356,62 @@ metadata/_edit_lock_ = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="TerrainMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 50)
+[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
+[node name="MapNode" type="Node" parent="."]
+
+[node name="TerrainMap" type="TileMapLayer" parent="MapNode"]
+position = Vector2(630, 50)
 scale = Vector2(0.8, 0.8)
-tile_map_data = PackedByteArray("AAAJAAkAAAAEAAkAAAAIAAkAAAABAAkAAAAHAAkAAAABAAkAAAAGAAkAAAABAAkAAAAFAAkAAAAEAAkAAAAEAAkAAAAEAAkAAAADAAkAAAABAAkAAAACAAkAAAABAAkAAAABAAkAAAABAAkAAAAAAAgAAAABAAkAAAAAAAcAAAABAAkAAAAAAAkAAAAEAAkAAAAAAAYAAAABAAkAAAAAAAUAAAAEAAkAAAABAAQAAAABAAkAAAABAAAAAAABAAkAAAAAAAEAAAABAAkAAAAAAAIAAAABAAkAAAAAAAAAAAAEAAkAAAAAAAMAAAABAAkAAAAAAAQAAAAEAAkAAAACAAAAAAABAAkAAAAEAAAAAAAEAAkAAAAEAAEAAAABAAkAAAAEAAIAAAABAAkAAAAEAAMAAAABAAkAAAACAAQAAAABAAkAAAAFAAQAAAAEAAkAAAAEAAQAAAAEAAkAAAADAAQAAAABAAkAAAADAAAAAAABAAkAAAAFAAAAAAAEAAkAAAAGAAAAAAABAAkAAAAHAAAAAAABAAkAAAAIAAAAAAABAAkAAAAJAAAAAAAEAAkAAAAJAAEAAAABAAkAAAAJAAIAAAABAAkAAAAJAAYAAAABAAkAAAAJAAcAAAABAAkAAAAHAAUAAAABAAkAAAAJAAMAAAABAAkAAAAJAAQAAAAEAAkAAAAJAAUAAAAEAAkAAAAJAAgAAAABAAkAAAAFAAcAAAABAAkAAAAFAAYAAAABAAkAAAAFAAUAAAAEAAkAAAAFAAgAAAABAAkAAAAEAAUAAAAEAAkAAAAIAAUAAAABAAkAAAAGAAUAAAABAAkAAAAEAP//AAAFAAkAAAAFAP//AAAEAAkAAAAFAP7/AAAEAAkAAAAEAP7/AAAFAAkAAAADAP//AAAEAAkAAAADAP7/AAAEAAkAAAAEAP3/AAAEAAkAAAAFAP3/AAAEAAkAAAADAP3/AAAEAAkAAAABAAEAAAABAAkAAAACAAEAAAABAAkAAAADAAEAAAABAAkAAAADAAIAAAABAAkAAAACAAIAAAABAAkAAAABAAIAAAABAAkAAAABAAMAAAABAAkAAAACAAMAAAABAAkAAAADAAMAAAABAAkAAAAGAP//AAAFAAkAAAAGAP7/AAAFAAkAAAAGAP3/AAAFAAkAAAA=")
+tile_map_data = PackedByteArray("AAAJAAkAAAAEAAkAAAAIAAkAAAAFAAkAAAAHAAkAAAAFAAkAAAAGAAkAAAAFAAkAAAAFAAkAAAAEAAkAAAAEAAkAAAAEAAkAAAADAAkAAAABAAkAAAACAAkAAAABAAkAAAABAAkAAAABAAkAAAAAAAgAAAAAAAkAAAAAAAcAAAAAAAkAAAAAAAkAAAAEAAkAAAAAAAYAAAAAAAkAAAAAAAUAAAAEAAkAAAABAAQAAAAEAAkAAAABAAAAAAAEAAkAAAAAAAEAAAAEAAkAAAAAAAIAAAAEAAkAAAAAAAAAAAAEAAkAAAAAAAMAAAAEAAkAAAAAAAQAAAAEAAkAAAACAAAAAAAEAAkAAAAEAAAAAAAEAAkAAAAEAAEAAAAEAAkAAAAEAAIAAAAEAAkAAAAEAAMAAAAEAAkAAAACAAQAAAAEAAkAAAAFAAQAAAAEAAkAAAAEAAQAAAAEAAkAAAADAAQAAAAEAAkAAAADAAAAAAAEAAkAAAAFAAAAAAAEAAkAAAAGAAAAAAABAAkAAAAHAAAAAAADAAkAAAAIAAAAAAABAAkAAAAJAAAAAAAEAAkAAAAJAAEAAAADAAkAAAAJAAIAAAADAAkAAAAJAAYAAAAFAAkAAAAJAAcAAAAFAAkAAAAHAAUAAAAFAAkAAAAJAAMAAAADAAkAAAAJAAQAAAAEAAkAAAAJAAUAAAAEAAkAAAAJAAgAAAAFAAkAAAAFAAcAAAAFAAkAAAAFAAYAAAAFAAkAAAAFAAUAAAAEAAkAAAAFAAgAAAAFAAkAAAAEAAUAAAAEAAkAAAAIAAUAAAAFAAkAAAAGAAUAAAAFAAkAAAABAAEAAAAEAAkAAAACAAEAAAAEAAkAAAADAAEAAAAEAAkAAAADAAIAAAAEAAkAAAACAAIAAAAEAAkAAAABAAIAAAAEAAkAAAABAAMAAAAEAAkAAAACAAMAAAAEAAkAAAADAAMAAAAEAAkAAAAFAAMAAAAEAAkAAAAFAAIAAAAEAAkAAAAFAAEAAAAEAAkAAAAGAAgAAAAFAAkAAAAGAAYAAAAFAAkAAAAGAAcAAAAFAAkAAAAHAAcAAAAFAAkAAAAHAAgAAAAFAAkAAAAHAAYAAAAFAAkAAAAIAAYAAAAFAAkAAAAIAAcAAAAFAAkAAAAIAAgAAAAFAAkAAAABAAYAAAAAAAkAAAABAAcAAAAAAAkAAAABAAgAAAAAAAkAAAACAAgAAAAAAAkAAAADAAgAAAAAAAkAAAAEAAgAAAADAAkAAAAEAAcAAAADAAkAAAAEAAYAAAADAAkAAAADAAcAAAAAAAkAAAACAAcAAAAAAAkAAAACAAYAAAAAAAkAAAACAAUAAAAAAAkAAAADAAUAAAAAAAkAAAADAAYAAAAAAAkAAAABAAUAAAAAAAkAAAAGAAQAAAADAAkAAAAGAAMAAAADAAkAAAAGAAIAAAADAAkAAAAHAAIAAAADAAkAAAAHAAEAAAADAAkAAAAIAAEAAAADAAkAAAAIAAIAAAADAAkAAAAIAAMAAAAAAAkAAAAIAAQAAAADAAkAAAAHAAQAAAADAAkAAAAHAAMAAAADAAkAAAAGAAEAAAADAAkAAAA=")
 tile_set = SubResource("TileSet_l6pdb")
 metadata/_edit_lock_ = true
 
-[node name="ObjectMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 35)
+[node name="ObjectMap" type="TileMapLayer" parent="MapNode"]
+position = Vector2(630, 35)
 scale = Vector2(0.8, 0.8)
-tile_map_data = PackedByteArray("AAADAAQAAAAAAAAAAAABAAQAAAAAAAoAAAACAAMAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAAQAAQAAAAAAAAAEAAQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_feppd")
 metadata/_edit_lock_ = true
 
-[node name="BorderMap" type="TileMapLayer" parent="."]
-position = Vector2(650, 50)
+[node name="BorderMap" type="TileMapLayer" parent="MapNode"]
+position = Vector2(630, 50)
 scale = Vector2(0.8, 0.8)
 tile_map_data = PackedByteArray("AAAEAAQAAAAAAA4AAAAFAAUAAAABABAAAAAEAAMAAAAAAA0AAAAEAAUAAAAAABAAAAAFAAQAAAABAA4AAAAFAAMAAAABAA0AAAA=")
 tile_set = SubResource("TileSet_bcos8")
 metadata/_edit_lock_ = true
 
-[node name="Playerr4" parent="." instance=ExtResource("12_436f3")]
+[node name="Playerr4" parent="MapNode" instance=ExtResource("12_436f3")]
+visible = false
 position = Vector2(-200, 400)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_lock_ = true
 
-[node name="Playerr3" parent="." instance=ExtResource("12_436f3")]
+[node name="Playerr3" parent="MapNode" instance=ExtResource("12_436f3")]
+visible = false
 position = Vector2(-200, 300)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_lock_ = true
 
-[node name="Playerr2" parent="." instance=ExtResource("12_436f3")]
+[node name="Playerr2" parent="MapNode" instance=ExtResource("12_436f3")]
+visible = false
 position = Vector2(-200, 200)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_lock_ = true
 
-[node name="Enemy" parent="." instance=ExtResource("8_l6pdb")]
+[node name="Enemy" parent="MapNode" instance=ExtResource("8_l6pdb")]
+visible = false
 position = Vector2(-200, 0)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_lock_ = true
 
-[node name="Playerr" parent="." instance=ExtResource("12_436f3")]
+[node name="Playerr" parent="MapNode" instance=ExtResource("12_436f3")]
+visible = false
 position = Vector2(-200, 100)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_lock_ = true
 
-[node name="HP" parent="." instance=ExtResource("9_r657h")]
+[node name="HP" parent="MapNode" instance=ExtResource("9_r657h")]
 position = Vector2(52, 42)
 scale = Vector2(1.5, 1.5)
 metadata/_edit_lock_ = true
@@ -462,7 +473,6 @@ size_flags_stretch_ratio = 0.0
 [node name="70x70" type="Sprite2D" parent="PanelContainer/BoxContainer/Control"]
 position = Vector2(374, 100)
 scale = Vector2(4.3285713, 1.9714291)
-texture = ExtResource("8_0i6v8")
 
 [node name="Control3" type="Control" parent="PanelContainer/BoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -576,7 +586,6 @@ size_flags_stretch_ratio = 0.0
 [node name="70x70" type="Sprite2D" parent="rezult/BoxContainer/Control"]
 position = Vector2(374, 100)
 scale = Vector2(4.3285713, 1.9714291)
-texture = ExtResource("8_0i6v8")
 
 [node name="Control3" type="Control" parent="rezult/BoxContainer"]
 custom_minimum_size = Vector2(0, 50)

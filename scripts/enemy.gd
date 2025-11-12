@@ -13,6 +13,9 @@ func refresh() -> void:
 	dmg = 1
 	is_alive = true
 	pos = Vector2i.ZERO
+	
+func _ready() -> void:
+	set_idle_anim()
 
 func move(new_pos: Vector2) -> void:
 	target = new_pos

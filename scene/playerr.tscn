@@ -215,6 +215,11 @@ animations = [{
 "name": &"damage",
 "speed": 10.0
 }, {
+"frames": [],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_efs0n")
@@ -237,10 +242,8 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x85lq")
-animation = &"damage"
+animation = &"idle"
 autoplay = "idle"
-frame = 15
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

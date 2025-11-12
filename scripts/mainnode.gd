@@ -1,11 +1,15 @@
 extends Node
 
-@onready var terrain_map_layer: TileMapLayer = $TerrainMap
-@onready var object_map_layer: TileMapLayer = $ObjectMap
-@onready var border_map_layer: TileMapLayer = $BorderMap
-@onready var player_on_map = $Playerr
-@onready var bot_list: Array[Node] = [$Playerr2, $Playerr3, $Playerr4, $Enemy]
-@onready var hp = $HP
+@export var player: PackedScene
+@export var enemy: PackedScene
+
+@onready var terrain_map_layer: TileMapLayer = $MapNode/TerrainMap
+@onready var object_map_layer: TileMapLayer = $MapNode/ObjectMap
+@onready var border_map_layer: TileMapLayer = $MapNode/BorderMap
+@onready var player_on_map = $MapNode/Playerr
+@onready var bot_list: Array[Node] = [$MapNode/Playerr2, $MapNode/Playerr3, $MapNode/Playerr4, $MapNode/Enemy]
+@onready var unit_list: Array[Node]
+@onready var hp = $MapNode/HP
 
 var art: Vector2i
 var port: Vector2i
@@ -20,27 +24,33 @@ var json: Dictionary
 func _ready() -> void:
 	
 	##download map
-	$HTTPRequest.request_completed.connect(_on_request_completed)
+	$HTTPRequest.request_completed.connect(_on_gen_map_completed)
+	$HTTPRequest2.request_completed.connect(_on_get_map_completed)
 	
 	## generate new map
-	#$HTTPRequest.request("https://peak.e-dt.ru/maps/gen_map")
+	#gen_map()
 	
 	## get map by num
-	$HTTPRequest.request("https://peak.e-dt.ru/maps/get_map/2")
+	get_map()
+	
 	$obuch.show()
 	$obuch/BoxContainer/Control3/bodyText.set("text", "	Привет! Я - Жорик, твой гид. Игра развивается, и ты сейчас находишься в стартовом билде. Каждый раз, как ты оказываешься в этих землях, ландшафт уникальный! Мы используем процедурную генерацию и систему событий, чтобы разнообразить твой опыт. Изначально идея задумывалась как мультиплеерная игра, в которой враги - другие игроки с той же целью, что и ты. Но за уложенные для геймджема сроки мы решили сделать синглплеерный билд. Если есть советы или предложения, комментарии на itch.io к твоему распоряжению.")
 	$obuch/BoxContainer/Control3/head2.set("text","Как играть?")
 				
-func _on_request_completed(result, response_code, headers, body):
-	
-	##json read
+func _on_gen_map_completed(result, response_code, headers, body):
 	json = JSON.parse_string(body.get_string_from_utf8())
-	
-	## for gen_map
-	#reset_game(json["map"])
-	
-	## for get_map/2
+	json = json["map"]
 	reset_game()
+	
+func _on_get_map_completed(result, response_code, headers, body):
+	json = JSON.parse_string(body.get_string_from_utf8())
+	reset_game()
+	
+func gen_map() -> void:
+	$HTTPRequest.request("https://peak.e-dt.ru/maps/gen_map")
+	
+func get_map(id: int = 2) -> void:
+	$HTTPRequest2.request("https://peak.e-dt.ru/maps/get_map/" + str(id))
 	
 	
 func reset_game() -> void:
@@ -52,6 +62,19 @@ func reset_game() -> void:
 	terrain_map_layer.clear()
 	object_map_layer.clear()
 	border_map_layer.clear()
+	
+	var pos_list: Array[Vector2i] = [Vector2i(0,0), Vector2i(0, map_size.y-1), Vector2i(map_size.x-1, 0), Vector2i(map_size.x-1, map_size.y-1)]
+	
+	## gen player
+	for i in 4:
+		var p = player.instantiate()
+		p.pos = pos_list[i]
+		var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(p.pos))
+		global_pos.y -= 15
+		p.global_position = global_pos
+		unit_list.append(p)
+		$MapNode.add_child(p)
+	
 	
 	## player start set pos
 	player_on_map.is_art = false
@@ -113,14 +136,8 @@ func reset_game() -> void:
 				
 		## Отрисовка тумана
 		if (player_on_map.pos != Vector2i(i["x"], i["y"])):
-			if (i["x"] == map_size.x-1 && i["y"] == map_size.y-1):
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 9))
-			elif i["x"] == map_size.x-1:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(2, 9))
-			elif i["y"] == map_size.y-1:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(1, 9))
-			else:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(0, 9))
+			terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 9))
+			
 				
 	## draw border
 	reset_border()

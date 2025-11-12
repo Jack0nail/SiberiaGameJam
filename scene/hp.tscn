@@ -137,30 +137,40 @@ metadata/_edit_horizontal_guides_ = [19.0]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"up"
+frame = 7
+frame_progress = 1.0
 
 [node name="HP2" type="AnimatedSprite2D" parent="."]
 position = Vector2(55, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"down"
+animation = &"up"
+frame = 7
+frame_progress = 1.0
 
 [node name="HP3" type="AnimatedSprite2D" parent="."]
 position = Vector2(110, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
-animation = &"down"
+animation = &"up"
+frame = 7
+frame_progress = 1.0
 
 [node name="HP4" type="AnimatedSprite2D" parent="."]
 position = Vector2(165, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"down"
+frame = 7
+frame_progress = 1.0
 
 [node name="HP5" type="AnimatedSprite2D" parent="."]
 position = Vector2(220, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_sdxke")
 animation = &"down"
+frame = 7
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="HP1" to="." method="_anim_finish"]
 [connection signal="animation_finished" from="HP2" to="." method="_anim_finish"]
