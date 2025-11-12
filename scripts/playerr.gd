@@ -8,6 +8,7 @@ var is_art = false
 var hp = 2
 var dmg = 1
 var is_alive = true
+var up_pos: int = 20
 
 func refresh() -> void:
 	hp = 2
@@ -18,8 +19,13 @@ func refresh() -> void:
 	
 func _ready() -> void:
 	set_idle_anim()
+	
+func set_global_pos(pos: Vector2) -> void:
+	pos.y -= up_pos
+	global_position = pos
 
 func move(new_pos: Vector2) -> void:
+	new_pos.y -= up_pos
 	target = new_pos
 
 func set_attack_anim() -> void:

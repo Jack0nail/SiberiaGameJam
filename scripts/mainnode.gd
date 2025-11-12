@@ -16,41 +16,49 @@ var port: Vector2i
 var map_size:= Vector2i.ZERO
 var cell_type_map: Dictionary[Vector2i,String]
 var is_move: bool = true
-const sand = Vector2i(4,9)
-const water = Vector2i(5,9)
+const sand = Vector2i(0,9)
+const water = Vector2i(1,9)
+const fog = Vector2i(2,9)
 var json: Dictionary
+var global_scale: Vector2
  
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	##download map
+	## download map
 	$HTTPRequest.request_completed.connect(_on_gen_map_completed)
 	$HTTPRequest2.request_completed.connect(_on_get_map_completed)
 	
 	## generate new map
 	#gen_map()
 	
-	## get map by num
+	## get map by num (20x20 by 97)
 	get_map()
 	
 	$obuch.show()
 	$obuch/BoxContainer/Control3/bodyText.set("text", "	Привет! Я - Жорик, твой гид. Игра развивается, и ты сейчас находишься в стартовом билде. Каждый раз, как ты оказываешься в этих землях, ландшафт уникальный! Мы используем процедурную генерацию и систему событий, чтобы разнообразить твой опыт. Изначально идея задумывалась как мультиплеерная игра, в которой враги - другие игроки с той же целью, что и ты. Но за уложенные для геймджема сроки мы решили сделать синглплеерный билд. Если есть советы или предложения, комментарии на itch.io к твоему распоряжению.")
 	$obuch/BoxContainer/Control3/head2.set("text","Как играть?")
-				
-func _on_gen_map_completed(result, response_code, headers, body):
-	json = JSON.parse_string(body.get_string_from_utf8())
-	json = json["map"]
-	reset_game()
 	
-func _on_get_map_completed(result, response_code, headers, body):
-	json = JSON.parse_string(body.get_string_from_utf8())
-	reset_game()
-	
+	terrain_map_layer.clear()
+	object_map_layer.clear()
+	border_map_layer.clear()
+
 func gen_map() -> void:
 	$HTTPRequest.request("https://peak.e-dt.ru/maps/gen_map")
 	
 func get_map(id: int = 2) -> void:
 	$HTTPRequest2.request("https://peak.e-dt.ru/maps/get_map/" + str(id))
+
+@warning_ignore("unused_parameter")
+func _on_gen_map_completed(result, response_code, headers, body):
+	json = JSON.parse_string(body.get_string_from_utf8())
+	json = json["map"]
+	reset_game()
+	
+@warning_ignore("unused_parameter")
+func _on_get_map_completed(result, response_code, headers, body):
+	json = JSON.parse_string(body.get_string_from_utf8())
+	reset_game()
 	
 	
 func reset_game() -> void:
@@ -58,30 +66,44 @@ func reset_game() -> void:
 	map_size.x = json["size"]["width"]
 	map_size.y = json["size"]["height"]
 	
-	## clear all map layer
+	## math magic oink oink
+	var math_scale = 780.0 / (96 * maxi(map_size.x, map_size.y))
+	global_scale = Vector2(math_scale, math_scale)
+	@warning_ignore("narrowing_conversion")
+	var up_pos: int = 25 * math_scale
+	var map_pos = 680 - (128 * math_scale / 2)
+	
+	## clear all map layer, set scale and global position map
 	terrain_map_layer.clear()
 	object_map_layer.clear()
 	border_map_layer.clear()
-	
-	var pos_list: Array[Vector2i] = [Vector2i(0,0), Vector2i(0, map_size.y-1), Vector2i(map_size.x-1, 0), Vector2i(map_size.x-1, map_size.y-1)]
+	terrain_map_layer.set_scale(global_scale)
+	object_map_layer.set_scale(global_scale)
+	border_map_layer.set_scale(global_scale)
+	terrain_map_layer.set_position(Vector2(map_pos, terrain_map_layer.get_position().y))
+	object_map_layer.set_position(Vector2(map_pos, object_map_layer.get_position().y))
+	border_map_layer.set_position(Vector2(map_pos, border_map_layer.get_position().y))
 	
 	## gen player
+	var pos_list: Array[Vector2i] = [Vector2i.ZERO, Vector2i(0, map_size.y - 1), Vector2i(map_size.x - 1, 0), Vector2i(map_size.x - 1, map_size.y - 1)]
+	unit_list.clear()
 	for i in 4:
 		var p = player.instantiate()
+		p.set_scale(global_scale)
+		p.up_pos = up_pos
 		p.pos = pos_list[i]
 		var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(p.pos))
-		global_pos.y -= 15
-		p.global_position = global_pos
+		p.set_global_pos(global_pos)
+		if i != 0:
+			p.hide()
 		unit_list.append(p)
 		$MapNode.add_child(p)
-	
 	
 	## player start set pos
 	player_on_map.is_art = false
 	player_on_map.pos = Vector2i.ZERO
 	var global_pos2 = terrain_map_layer.to_global(terrain_map_layer.map_to_local(player_on_map.pos))
-	global_pos2.y -= 15
-	player_on_map.global_position = global_pos2
+	player_on_map.set_global_pos(global_pos2)
 	player_on_map.move(global_pos2)
 	is_move = true
 	refresh_hp()
@@ -92,64 +114,72 @@ func reset_game() -> void:
 		i.refresh()
 	
 	## set start bot pos
-	bot_list[0].pos = Vector2i(0, map_size.y-1)
-	bot_list[1].pos = Vector2i(map_size.x-1, 0)
-	bot_list[2].pos = Vector2i(map_size.x-1, map_size.y-1)
+	bot_list[0].pos = Vector2i(0, map_size.y -1 )
+	bot_list[1].pos = Vector2i(map_size.x - 1, 0)
+	bot_list[2].pos = Vector2i(map_size.x - 1, map_size.y - 1)
 	
 	## set start bot draw
 	for i in 3:
 		var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[i].pos))
-		global_pos.y -= 15
 		bot_list[i].hp = 2
-		bot_list[i].global_position = global_pos
+		bot_list[i].set_global_pos(global_pos)
 		bot_list[i].move(global_pos)
 		bot_list[i].hide()
 	
 	## draw map
 	for i in json["cells"]:
 		cell_type_map.set(Vector2i(i["x"],i["y"]),i["cell_type"])
-		
-		## draw start cell
-		if i["x"] == 0 && i["y"] == 0:
-			if i["cell_type"] == "S":
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, sand)
-			else:
-				terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, water)
-				
+		terrain_draw_cell(Vector2i(i["x"], i["y"]))
 				
 		if (i["cell_items"].size() != 0):
-			
-			## enemy start set pos
-			if (i["cell_items"][0] == "ANGRY_PERSON"):
-				bot_list[3].pos = Vector2i(i["x"],i["y"])
-				var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[3].pos))
-				global_pos.y -= 15
-				bot_list[3].global_position = global_pos
-				bot_list[3].move(global_pos)
-				bot_list[3].hide()
+			match i["cell_items"][0]:
 				
+				## enemy start set pos
+				"ANGRY_PERSON":
+					var e = enemy.instantiate()
+					e.set_scale(global_scale)
+					e.up_pos = up_pos
+					e.pos = Vector2i(i["x"],i["y"])
+					var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(e.pos))
+					e.set_global_pos(global_pos)
+					e.hide()
+					unit_list.append(e)
+					$MapNode.add_child(e)
+					
+					bot_list[3].pos = Vector2i(i["x"],i["y"])
+					#var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[3].pos))
+					bot_list[3].set_global_pos(global_pos)
+					bot_list[3].move(global_pos)
+					bot_list[3].hide()
+					
 				## write pos portal and artifact
-			elif (i["cell_items"][0] == "PORTAL"):
-				port = Vector2i(i["x"],i["y"])
-			elif (i["cell_items"][0] == "ARTIFACT"):
-				art = Vector2i(i["x"],i["y"])
-				
-		## Отрисовка тумана
-		if (player_on_map.pos != Vector2i(i["x"], i["y"])):
-			terrain_map_layer.set_cell(Vector2i(i["x"], i["y"]), 0, Vector2i(3, 9))
-			
-				
-	## draw border
+				"PORTAL":
+					port = Vector2i(i["x"],i["y"])
+				"ARTIFACT":
+					art = Vector2i(i["x"],i["y"])
+					
+	terrain_draw_cell(unit_list[0].pos, cell_type_map.get(unit_list[0].pos))
 	reset_border()
 	refresh_hp()
-	
+
+
 func set_is_move(l: bool) -> void:
 	is_move = l
 	if l:
 		$Label.hide()
 	else:
 		$Label.show()
-		
+
+
+func terrain_draw_cell(position_cell: Vector2i, cell_type: String = "F", atlas: int = 0) -> void:
+	match cell_type:
+		"S":
+			terrain_map_layer.set_cell(position_cell, atlas, sand)
+		"W":
+			terrain_map_layer.set_cell(position_cell, atlas, water)
+		_:
+			terrain_map_layer.set_cell(position_cell, atlas, fog)
+
 
 func reset_border() -> void:
 	border_map_layer.clear()
@@ -175,14 +205,17 @@ func reset_border() -> void:
 			if i.is_alive:
 				if abs(i.pos.x - player_on_map.pos.x) + abs(i.pos.y - player_on_map.pos.y) == 1:
 					border_map_layer.set_cell(i.pos, 0, Vector2i(1, 14))
-		
+
+
 func refresh_hp() -> void:
 	hp.refresh()
-	
+
+
 ## сколько прибавить\убавить очков хп
 func add_hp(num: int) -> void:
 	hp.change_hp(num)
-	
+
+
 func move_bots() -> void:
 	for i in bot_list.size():
 		if bot_list[i].is_alive:
@@ -194,19 +227,18 @@ func move_bots() -> void:
 				else:
 					bot_list[i].pos = get_randi_move(bot_list[i].pos)
 					var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[i].pos))
-					global_pos.y -= 15
 					bot_list[i].move(global_pos)
 					print("bot"+str(i)+" select move")
 			else:
 				bot_list[i].pos = get_randi_move(bot_list[i].pos)
 				var global_pos = terrain_map_layer.to_global(terrain_map_layer.map_to_local(bot_list[i].pos))
-				global_pos.y -= 15
 				bot_list[i].move(global_pos)
 				print("bot"+str(i)+" select move")
 	bot_visible()
 	set_is_move(true)
 	reset_border()
-	
+
+
 func get_randi_move(unit_pos: Vector2i) -> Vector2i:
 	var new_pos:= Vector2i.ZERO
 	var count = 0
@@ -225,13 +257,14 @@ func get_randi_move(unit_pos: Vector2i) -> Vector2i:
 					return new_pos
 		count += 1
 	return unit_pos
-	
+
 
 func pos_check_contact(unit1: Vector2i, unit2: Vector2i) -> bool:
 	if (unit1.x == unit2.x && unit1.y == unit2.y):
 		return false
 	else:
 		return true
+
 
 ## show\hide bot
 func bot_visible() -> void:
@@ -244,22 +277,24 @@ func bot_visible() -> void:
 				if i.is_visible():
 					await get_tree().create_timer(0.3).timeout
 				i.hide()
-			
-			
+
+
 func check_attack_player(target: Vector2i) -> bool:
 	for i in bot_list:
 		if i.is_alive:
 			if i.pos == target:
 				return false
 	return true
-	
+
+
 func get_attack_bot_index(target: Vector2i) -> int:
 	for i in bot_list.size():
 		if bot_list[i].is_alive:
 			if bot_list[i].pos == target:
 				return i
 	return -1
-	
+
+
 func bot_attack(target: int, attacker_id: int) -> void:
 	if target == -1:
 		player_on_map.set_damage_anim()
@@ -277,8 +312,8 @@ func bot_attack(target: int, attacker_id: int) -> void:
 		bot_list[target].change_hp(bot_list[attacker_id].dmg*-1)
 	print("unit "+ str(attacker_id)+ " attack "+str(target))
 	await get_tree().create_timer(1.0).timeout
-	
-	
+
+
 func scan_around(index: int) -> Array[int]:
 	var targets: Array[int]
 	if index != -1:
@@ -289,7 +324,8 @@ func scan_around(index: int) -> Array[int]:
 			if (abs(bot_list[index].pos.x - bot_list[i].pos.x) + abs(bot_list[index].pos.y - bot_list[i].pos.y) == 1):
 				targets.append(i)
 	return targets
-	
+
+
 func player_attack(id_bot: int) -> void:
 	bot_list[id_bot].set_damage_anim()
 	player_on_map.set_attack_anim()
@@ -299,72 +335,78 @@ func player_attack(id_bot: int) -> void:
 	reset_border()
 	move_bots()
 
+
+## check artifact
+func check_and_draw_art() -> void:
+	var mod_art = player_on_map.pos - art
+	if (abs(mod_art.x)+abs(mod_art.y)==1 && player_on_map.is_art == false):
+		object_map_layer.set_cell(Vector2i(art), 1, Vector2i.ZERO)
+	if (player_on_map.pos == art && player_on_map.is_art == false):
+		player_on_map.is_art = true
+		print("art")
+		object_map_layer.erase_cell(art)
+
+
+## check portal and end game
+func check_and_draw_port() -> void:
+	var mod_port = player_on_map.pos - port
+	if (abs(mod_port.x)+abs(mod_port.y)==1):
+		object_map_layer.set_cell(Vector2i(port), 0, Vector2i.ZERO)
+	if (player_on_map.pos == port && player_on_map.is_art):
+		print("port")
+		is_move = false
+		border_map_layer.clear()
+		border_map_layer.set_cell(player_on_map.pos, 0, Vector2i(1,13))
+		$obuch.show()
+		$obuch/BoxContainer/Control3/bodyText.set("text","Хей, я смотрю ты сделал это! Так вот как выглядит этот.. ну.. как его.. икосэдр. Теперь нам нужно вернуться домой и рассказать всем о нашем приключении! Мы - герои спасшие.. священный камень!")
+		$obuch/BoxContainer/Control3/head2.set("text","ПОЗДРАВЛЯЮ")
+		$obuch/BoxContainer/Control2/Button_obuch.set("text","В смысле \"мы\"?")
+		$obuch/BoxContainer/Control2/ChevronBigLeftWhite.hide()
+		#$Button2.show()
+
+func player_process(cell_cord: Vector2i) -> void:
+	if check_attack_player(cell_cord):
+		set_is_move(false)
+		player_on_map.pos = cell_cord
+		
+		## draw open cell
+		terrain_draw_cell(cell_cord, cell_type_map.get(cell_cord))
+		
+		## move player
+		var cell_pos_global = terrain_map_layer.to_global(terrain_map_layer.map_to_local(cell_cord))
+		#print(cell_pos_global)
+		print("player move")
+		player_on_map.move(Vector2(float(cell_pos_global.x), float(cell_pos_global.y)))
+		border_map_layer.clear()
+		
+		await get_tree().create_timer(0.5).timeout
+		bot_visible()
+		check_and_draw_art()
+		check_and_draw_port()
+		reset_border()
+			
+		## move all bot
+		await get_tree().create_timer(0.5).timeout
+		move_bots()
+	else:
+		set_is_move(false)
+		bot_attack(get_attack_bot_index(cell_cord), -1)
+		await get_tree().create_timer(1.0).timeout
+		reset_border()
+		move_bots()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if is_move:
 		if Input.is_action_just_pressed("move_on_click"):
 			var cell_cord = terrain_map_layer.local_to_map(terrain_map_layer.get_local_mouse_position())
 			print(cell_cord)
 			
-			## check move player
-			if (abs(cell_cord.x - player_on_map.pos.x) + abs(cell_cord.y - player_on_map.pos.y) == 1):
-				if check_attack_player(cell_cord):
-					if (cell_cord.x > -1 && cell_cord.x < map_size.x && cell_cord.y > -1 && cell_cord.y < map_size.y):
-						set_is_move(false)
-						player_on_map.pos = cell_cord
-						
-						## draw open cell
-						terrain_map_layer.erase_cell(cell_cord)
-						if cell_type_map.get(cell_cord) == "S":
-							terrain_map_layer.set_cell(cell_cord, 0, sand)
-						else:
-							terrain_map_layer.set_cell(cell_cord, 0, water)
-						reset_border()
-						
-						## move player
-						var cell_pos_global = terrain_map_layer.to_global(terrain_map_layer.map_to_local(cell_cord))
-						#print(cell_pos_global)
-						print("player move")
-						cell_pos_global.y -= 15
-						player_on_map.move(Vector2(float(cell_pos_global.x), float(cell_pos_global.y)))
-						
-						bot_visible()
-						
-						## check artifact
-						var mod_art = cell_cord - art
-						if (abs(mod_art.x)+abs(mod_art.y)==1 && player_on_map.is_art == false):
-							object_map_layer.set_cell(Vector2i(art), 1, Vector2i.ZERO)
-						if (cell_cord == art && player_on_map.is_art == false):
-							player_on_map.is_art = true
-							print("art")
-							object_map_layer.erase_cell(art)
-							
-						## check portal
-						var mod_port = cell_cord - port
-						if (abs(mod_port.x)+abs(mod_port.y)==1):
-							object_map_layer.set_cell(Vector2i(port), 0, Vector2i.ZERO)
-						if (cell_cord == port && player_on_map.is_art):
-							print("port")
-							is_move = false
-							border_map_layer.clear()
-							border_map_layer.set_cell(player_on_map.pos, 0, Vector2i(1,13))
-							$obuch.show()
-							$obuch/BoxContainer/Control3/bodyText.set("text","Хей, я смотрю ты сделал это! Так вот как выглядит этот.. ну.. как его.. икосэдр. Теперь нам нужно вернуться домой и рассказать всем о нашем приключении! Мы - герои спасшие.. священный камень!")
-							$obuch/BoxContainer/Control3/head2.set("text","ПОЗДРАВЛЯЮ")
-							$obuch/BoxContainer/Control2/Button_obuch.set("text","В смысле \"мы\"?")
-							$obuch/BoxContainer/Control2/ChevronBigLeftWhite.hide()
-							#$Button2.show()
-							
-						await get_tree().create_timer(1.0).timeout
-						
-						## move all bot
-						move_bots()
-				else:
-					set_is_move(false)
-					bot_attack(get_attack_bot_index(cell_cord), -1)
-					await get_tree().create_timer(1.0).timeout
-					reset_border()
-					move_bots()
+			if (abs(cell_cord.x - player_on_map.pos.x) + abs(cell_cord.y - player_on_map.pos.y) == 1) && (cell_cord.x > -1 && cell_cord.x < map_size.x && cell_cord.y > -1 && cell_cord.y < map_size.y):
+				player_process(cell_cord)
+
 
 func _on_button_pressed() -> void:
 	$PanelContainer.hide()
