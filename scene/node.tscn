@@ -387,6 +387,8 @@ position = Vector2(52, 42)
 scale = Vector2(1.5, 1.5)
 metadata/_edit_lock_ = true
 
+[node name="PlayerNode" type="Node" parent="MapNode"]
+
 [node name="Button2" type="Button" parent="."]
 visible = false
 offset_left = 281.0

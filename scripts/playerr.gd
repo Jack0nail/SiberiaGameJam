@@ -3,12 +3,15 @@ extends CharacterBody2D
 const SPEED = 100.0
 @onready var target = position
 @onready var anim = $AnimatedSprite2D
+@onready var gem = $gem
 var pos:= Vector2i.ZERO
 var is_art = false
 var hp = 2
-var dmg = 1
+var dmg = -1
 var is_alive = true
 var up_pos: int = 20
+
+signal drop_art
 
 func refresh() -> void:
 	hp = 2
@@ -19,6 +22,10 @@ func refresh() -> void:
 	
 func _ready() -> void:
 	set_idle_anim()
+	
+func set_art(art: bool) -> void:
+	gem.show()
+	is_art = art
 	
 func set_global_pos(pos: Vector2) -> void:
 	pos.y -= up_pos
@@ -44,13 +51,13 @@ func change_hp(num: int) -> void:
 			dead_unit()
 			
 func dead_unit() -> void:
-	pos = Vector2i(-1,-1)
 	is_alive = false
-	print("bot_dead")
+	if is_art:
+		drop_art.emit(pos)
+	pos = Vector2i(-1,-1)
+	print(str(get_index()) + " bot dead")
 	await get_tree().create_timer(0.9).timeout
 	hide()
-	
-	
 
 func _physics_process(delta: float) -> void:
 	if is_alive:

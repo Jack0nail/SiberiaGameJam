@@ -5,9 +5,10 @@ const SPEED = 100.0
 @onready var anim = $AnimatedSprite2D
 var pos:= Vector2i.ZERO
 var hp = 2
-var dmg = 1 
+var dmg = -1 
 var is_alive = true
 var up_pos: int = 20
+var is_art = false
 
 func refresh() -> void:
 	hp = 2
@@ -42,9 +43,9 @@ func change_hp(num: int) -> void:
 			dead_unit()
 			
 func dead_unit() -> void:
-	pos = Vector2i(-1,-1)
 	is_alive = false
-	print("bot_enemy_dead")
+	pos = Vector2i(-1,-1)
+	print(str(get_index()) + " bot enemy dead")
 	await get_tree().create_timer(0.9).timeout
 	hide()
 
